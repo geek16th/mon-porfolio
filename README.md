@@ -7,7 +7,7 @@ Ce site présente mes projets, compétences et réalisations dans le domaine du 
 
 ## À propos de moi
 Je suis **Al Hassane Ba**, passionné par la cybersécurité et les reseaux.  
-Je suis actuellement etudiant en Telecommunication et Reseaux a l'Ecole Superieure Polytechnique de DAKAR.
+Je suis actuellement etudiant en **Telecommunication et Reseaux a l'Ecole Superieure Polytechnique de DAKAR**.
 
 ---
 
