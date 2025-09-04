@@ -957,6 +957,126 @@
             </div>
         </div>
     </section>
+    <!-- Section Projets -->
+    <section id="projects" class="section">
+        <div class="section-content">
+            <h2 class="section-title fade-in">Mes Projets</h2>
+            <div class="projects-grid fade-in">
+
+                <!-- Projet SDN -->
+                <div class="project-card" onclick="openProjectModal('projetSDN')">
+                    <div class="project-image">
+                        <img src="projetsdn.jpg" alt="Projet SDN" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Voir le projet</a>
+                                <a href="#" class="project-link">Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Projet de virtualisation réseau (ended)</h3>
+                        <p>Mise en place d'un réseau SDN avec OpenvSwitch et Ryu dans Proxmox.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">SDN</span>
+                            <span class="tech-tag">Proxmox</span>
+                            <span class="tech-tag">Ryu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Téléphonie IP -->
+                <div class="project-card" onclick="openProjectModal('telephonieIP')">
+                    <div class="project-image">
+                        <img src="telephonieIP.jpg" alt="Projet Téléphonie IP" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link">Voir le projet</a>
+                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link">Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Réseau de téléphonie IP avec Asterisk (ended)</h3>
+                        <p>Projet final de téléphonie d'entreprise avec serveur Asterisk et VLANs.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Asterisk</span>
+                            <span class="tech-tag">VoIP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="project-card" onclick="openProjectModal('portfolio')">
+                    <div class="project-image">
+                        <img src="portfolio1.PNG" alt="Portfolio créatif" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Voir le projet</a>
+                                <a href="#" class="project-link">Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Portfolio Créatif (en cours)</h3>
+                        <p>Site portfolio avec animations CSS avancées et design responsive.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Cisco/Huawei -->
+                <div class="project-card" onclick="openProjectModal('ciscoHuawei')">
+                    <div class="project-image">
+                        <img src="proejt_vacc1.jpg" alt="Cisco Huawei" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">Voir le projet</a>
+                                <a href="#" class="project-link">Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Configuration Cisco & Huawei (ended)</h3>
+                        <p>Configuration de routeurs et switchs pour serveur DHCP et routage IP.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Cisco</span>
+                            <span class="tech-tag">Huawei</span>
+                            <span class="tech-tag">DHCP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Surveillance Réseau -->
+                <div class="project-card" onclick="openProjectModal('surveillanceReseau')">
+                    <div class="project-image">
+                        <img src="sas1.jpg" alt="Surveillance réseau" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link">Voir le projet</a>
+                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link">Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Système de surveillance réseau (en cours)</h3>
+                        <p>Interface web pour surveiller bande passante, hôtes et alertes.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Frontend</span>
+                            <span class="tech-tag">Backend</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <section id="activites" class="section">
         <div class="section-content">
@@ -1020,127 +1140,6 @@
                 </div>
                 <p>Je consacre aussi mon temps à l’étude du Coran, à la méditation et à l’apprentissage de valeurs éthiques et spirituelles.</p>
             </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Projets -->
-    <section id="projects" class="section">
-        <div class="section-content">
-            <h2 class="section-title fade-in">Mes Projets</h2>
-            <div class="projects-grid fade-in">
-
-                <!-- Projet SDN -->
-                <div class="project-card" onclick="openProjectModal('projetSDN')">
-                    <div class="project-image">
-                        <img src="projetsdn.jpg" alt="Projet SDN" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">Voir le projet</a>
-                                <a href="#" class="project-link">Code source</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Projet de virtualisation réseau</h3>
-                        <p>Mise en place d'un réseau SDN avec OpenvSwitch et Ryu dans Proxmox.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">SDN</span>
-                            <span class="tech-tag">Proxmox</span>
-                            <span class="tech-tag">Ryu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet Téléphonie IP -->
-                <div class="project-card" onclick="openProjectModal('telephonieIP')">
-                    <div class="project-image">
-                        <img src="telephonieIP.jpg" alt="Projet Téléphonie IP" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link">Voir le projet</a>
-                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link">Code source</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Réseau de téléphonie IP avec Asterisk</h3>
-                        <p>Projet final de téléphonie d'entreprise avec serveur Asterisk et VLANs.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Linux</span>
-                            <span class="tech-tag">Asterisk</span>
-                            <span class="tech-tag">VoIP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio -->
-                <div class="project-card" onclick="openProjectModal('portfolio')">
-                    <div class="project-image">
-                        <img src="portfolio1.PNG" alt="Portfolio créatif" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">Voir le projet</a>
-                                <a href="#" class="project-link">Code source</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Portfolio Créatif</h3>
-                        <p>Site portfolio avec animations CSS avancées et design responsive.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet Cisco/Huawei -->
-                <div class="project-card" onclick="openProjectModal('ciscoHuawei')">
-                    <div class="project-image">
-                        <img src="proejt_vacc1.jpg" alt="Cisco Huawei" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link">Voir le projet</a>
-                                <a href="#" class="project-link">Code source</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Configuration Cisco & Huawei</h3>
-                        <p>Configuration de routeurs et switchs pour serveur DHCP et routage IP.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Cisco</span>
-                            <span class="tech-tag">Huawei</span>
-                            <span class="tech-tag">DHCP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet Surveillance Réseau -->
-                <div class="project-card" onclick="openProjectModal('surveillanceReseau')">
-                    <div class="project-image">
-                        <img src="sas1.jpg" alt="Surveillance réseau" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link">Voir le projet</a>
-                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link">Code source</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Système de surveillance réseau</h3>
-                        <p>Interface web pour surveiller bande passante, hôtes et alertes.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Frontend</span>
-                            <span class="tech-tag">Backend</span>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -1570,7 +1569,7 @@
 
             document.querySelectorAll('img').forEach(img => {
                 imageObserver.observe(img);
-            });
+            });  
         }
         
         
