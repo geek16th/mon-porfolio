@@ -944,7 +944,9 @@
 
         .timeline { display:flex; flex-direction:column; gap:18px; max-width:900px; margin:0 auto; }
         .timeline-item { display:grid; grid-template-columns: 40px 1fr 80px; gap:12px; align-items:start; background: var(--bg-card); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); box-shadow: var(--shadow); }
-        .timeline-dot { width:14px; height:14px; border-radius:50%; background: var(--accent); margin-top:6px; }
+    .timeline-dot { width:14px; height:14px; border-radius:50%; background: var(--accent); margin-top:6px; display:flex; align-items:center; justify-content:center; }
+    .timeline-dot svg { width:12px; height:12px; fill: white; }
+    .timeline-dot.project { background: #ffb86b; }
         .timeline-body h3 { margin-bottom:6px; color: var(--accent); }
         .timeline-body .muted { color: var(--text-secondary); font-size:0.9rem; margin-bottom:6px; }
         .timeline-year { text-align:right; color: var(--text-secondary); font-weight:700; }
@@ -1025,7 +1027,10 @@
 
                 <!-- Education -->
                 <div class="timeline-item" data-type="education">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <!-- graduation cap icon -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.909V17h2V9z"></path><path d="M11 12.816L3.053 9 11 5.184 18.947 9z" opacity=".3"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Baccalauréat en Enseignement Islamique</h3>
                         <p class="muted">Maison de la Sagesse</p>
@@ -1035,7 +1040,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="education">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.909V17h2V9z"></path><path d="M11 12.816L3.053 9 11 5.184 18.947 9z" opacity=".3"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Baccalauréat d'Enseignement Général — Série S1</h3>
                         <p class="muted">Maison de la Sagesse</p>
@@ -1045,7 +1052,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="education">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.909V17h2V9z"></path><path d="M11 12.816L3.053 9 11 5.184 18.947 9z" opacity=".3"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Diplôme de Technicien Supérieur — Télécom & Réseaux</h3>
                         <p class="muted">École Supérieure Polytechnique (ESP)</p>
@@ -1056,7 +1065,10 @@
 
                 <!-- Certifications -->
                 <div class="timeline-item" data-type="certif">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <!-- certificate icon -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Certificat en Informatique et Internet</h3>
                         <p class="muted">Force‑N</p>
@@ -1066,7 +1078,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="certif">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Certificat en Commerce Digital</h3>
                         <p class="muted">Force‑N</p>
@@ -1076,7 +1090,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="certif">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>HCIA‑Datacom V1.0</h3>
                         <p class="muted">Huawei Talent Online</p>
@@ -1086,7 +1102,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="certif">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Certificat d'Analyste Junior en Cybersécurité</h3>
                         <p class="muted">Cisco (via Force‑N)</p>
@@ -1095,7 +1113,9 @@
                     <div class="timeline-year">2025</div>
                 </div>
                 <div class="timeline-item" data-type="certif">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>CCNA 1</h3>
                         <p class="muted">Cisco (via ESP Academie)</p>
@@ -1106,7 +1126,10 @@
 
                 <!-- Projects -->
                 <div class="timeline-item" data-type="project">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot project"> 
+                        <!-- gear icon -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.14,7.14,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.07,7.07,0,0,0-1.6-.93L14,2.23a.5.5,0,0,0-.5-.23H10.5a.5.5,0,0,0-.5.23L9,4.16a7.07,7.07,0,0,0-1.6.93l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11a7.14,7.14,0,0,0,0,1.88L2.75,14.53a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.07,7.07,0,0,0,1.6.93L9.5,21.77A.5.5,0,0,0,10,22h3a.5.5,0,0,0,.5-.23l1-1.93a7.07,7.07,0,0,0,1.6-.93l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63Z"/></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Projet de virtualisation réseau (SDN)</h3>
                         <p class="muted">OpenvSwitch, Ryu, Proxmox</p>
@@ -1116,7 +1139,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="project">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.14,7.14,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.07,7.07,0,0,0-1.6-.93L14,2.23a.5.5,0,0,0-.5-.23H10.5a.5.5,0,0,0-.5.23L9,4.16a7.07,7.07,0,0,0-1.6.93l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11a7.14,7.14,0,0,0,0,1.88L2.75,14.53a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.07,7.07,0,0,0,1.6.93L9.5,21.77A.5.5,0,0,0,10,22h3a.5.5,0,0,0,.5-.23l1-1.93a7.07,7.07,0,0,0,1.6-.93l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63Z"/></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Réseau de téléphonie IP avec Asterisk</h3>
                         <p class="muted">Asterisk, VLANs</p>
@@ -1126,7 +1151,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="project">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.14,7.14,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.07,7.07,0,0,0-1.6-.93L14,2.23a.5.5,0,0,0-.5-.23H10.5a.5.5,0,0,0-.5.23L9,4.16a7.07,7.07,0,0,0-1.6.93l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11a7.14,7.14,0,0,0,0,1.88L2.75,14.53a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.07,7.07,0,0,0,1.6.93L9.5,21.77A.5.5,0,0,0,10,22h3a.5.5,0,0,0,.5-.23l1-1.93a7.07,7.07,0,0,0,1.6-.93l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63Z"/></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Portfolio Créatif</h3>
                         <p class="muted">HTML / CSS / JS</p>
@@ -1136,7 +1163,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="project">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.14,7.14,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.07,7.07,0,0,0-1.6-.93L14,2.23a.5.5,0,0,0-.5-.23H10.5a.5.5,0,0,0-.5.23L9,4.16a7.07,7.07,0,0,0-1.6.93l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11a7.14,7.14,0,0,0,0,1.88L2.75,14.53a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.07,7.07,0,0,0,1.6.93L9.5,21.77A.5.5,0,0,0,10,22h3a.5.5,0,0,0,.5-.23l1-1.93a7.07,7.07,0,0,0,1.6-.93l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63Z"/></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Configuration Cisco & Huawei</h3>
                         <p class="muted">Routage, DHCP</p>
@@ -1146,7 +1175,9 @@
                 </div>
 
                 <div class="timeline-item" data-type="project">
-                    <div class="timeline-dot"></div>
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.14,7.14,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.07,7.07,0,0,0-1.6-.93L14,2.23a.5.5,0,0,0-.5-.23H10.5a.5.5,0,0,0-.5.23L9,4.16a7.07,7.07,0,0,0-1.6.93l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11a7.14,7.14,0,0,0,0,1.88L2.75,14.53a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.07,7.07,0,0,0,1.6.93L9.5,21.77A.5.5,0,0,0,10,22h3a.5.5,0,0,0,.5-.23l1-1.93a7.07,7.07,0,0,0,1.6-.93l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63Z"/></svg>
+                    </div>
                     <div class="timeline-body">
                         <h3>Système de surveillance réseau</h3>
                         <p class="muted">Python, MySQL, Web UI</p>
