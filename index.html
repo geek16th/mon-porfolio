@@ -42,6 +42,7 @@
             top: 0;
             width: 100%;
             background: rgba(10, 10, 10, 0.95);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -632,7 +633,7 @@
         }
 
         /* Flèches */
-        .prev, .next {
+    .prev, .next {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -642,7 +643,8 @@
         padding: 5px 10px;
         border-radius: 50%;
         cursor: pointer;
-        user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
         transition: background 0.3s;
         }
 
@@ -846,6 +848,125 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* Floating helper widget styles */
+        #helperWidget {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 2001;
+            font-family: inherit;
+        }
+
+        #widgetToggle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #widgetPanel {
+            width: 300px;
+            max-width: calc(100vw - 48px);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            color: var(--text-primary);
+            border-radius: 14px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            margin-bottom: 12px;
+            margin-right: 6px;
+            transform-origin: bottom right;
+            overflow: hidden;
+            display: none;
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+        }
+
+        #widgetPanel[aria-hidden="false"] { display: block; }
+
+        .widget-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg,#00d4ff,#764ba2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+
+        .avatar .eye {
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            transition: transform 0.15s ease;
+        }
+
+        .avatar .left { left: 16px; }
+        .avatar .right { right: 16px; }
+
+        .widget-title .name { font-weight: 700; }
+        .widget-title .clock { font-size: 0.9rem; color: var(--text-secondary); }
+
+        .icon { background: transparent; border: none; color: var(--text-primary); font-size: 18px; cursor: pointer; }
+
+        .widget-body { padding: 12px; }
+        .widget-body p { color: var(--text-secondary); margin-bottom: 12px; }
+
+        .widget-actions { display: flex; gap: 8px; }
+        .btn.small { padding: 8px 10px; border-radius: 8px; border: none; cursor: pointer; background: var(--accent); color: var(--bg-primary); font-weight: 600; }
+        .btn.small.outline { background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--text-primary); }
+
+        .widget-footer { margin-top: 10px; color: var(--text-secondary); font-size: 12px; }
+
+        /* Timeline styles */
+        .timeline-controls { display:flex; gap:10px; justify-content:center; margin-bottom:18px; }
+        .filter-btn { background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--text-primary); padding:8px 12px; border-radius:10px; cursor:pointer; }
+        .filter-btn.active { background: var(--accent); color: var(--bg-primary); border-color: transparent; }
+
+        .timeline { display:flex; flex-direction:column; gap:18px; max-width:900px; margin:0 auto; }
+        .timeline-item { display:grid; grid-template-columns: 40px 1fr 80px; gap:12px; align-items:start; background: var(--bg-card); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03); box-shadow: var(--shadow); }
+        .timeline-dot { width:14px; height:14px; border-radius:50%; background: var(--accent); margin-top:6px; }
+        .timeline-body h3 { margin-bottom:6px; color: var(--accent); }
+        .timeline-body .muted { color: var(--text-secondary); font-size:0.9rem; margin-bottom:6px; }
+        .timeline-year { text-align:right; color: var(--text-secondary); font-weight:700; }
+        .timeline-item.hidden { display:none !important; }
+
+        @media (max-width: 720px) {
+            .timeline-item { grid-template-columns: 32px 1fr 60px; }
+            .timeline-year { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 480px) {
+            #helperWidget { right: 12px; bottom: 12px; }
+            #widgetPanel { width: 92vw; }
+        }
+        /* moved inline styles */
+        .timeline-intro { text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .aboutMeSection { padding: 50px; background: var(--bg-secondary); }
+        .aboutMeTitle { text-align: center; color: #3b1919d0; }
+    /* Quick resume modal styles */
+    .quick-resume-desc { color: var(--text-secondary); margin-bottom:10px; }
+    .quick-resume-heading { color: var(--accent); margin-top:12px; }
+    .quick-resume-actions { display:flex; gap:10px; margin-top:12px; }
     </style>
 </head>
 <body>
@@ -887,46 +1008,159 @@
          <!-- Boutons dans la section d'accueil -->
         
     </section>
-   
+    <!-- Parcours (timeline) Section -->
+    <section id="parcours" class="section">
+        <div class="section-content">
+            <h2 class="section-title fade-in">Mon Parcours</h2>
+            <p class="fade-in timeline-intro">Un aperçu chronologique de ma formation, mes certifications et projets marquants.</p>
 
-    <!-- Section cachée "Qui suis-je" -->
-    <section id="aboutMe" style="padding:50px; background: var(--bg-secondary);">
-        <div class="about-me-card">
-            <h2 style="text-align: center; color: #3b1919d0;">Al Hassane BA</h2>
-            <p>
-                Passionné par les télécommunications, la cybersécurité et les réseaux informatiques,
-                je suis actuellement étudiant en Genie informatique, option Télécommunications et Réseaux à l'École Supérieure Polytechnique de Dakar.
-            </p>
+            <div class="timeline-controls fade-in">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="education">Éducation</button>
+                <button class="filter-btn" data-filter="certif">Certifications</button>
+                <button class="filter-btn" data-filter="project">Projets</button>
+            </div>
 
-            <h3>Diplômes</h3>
-            <ul>
-                <li>2022 - Baccalauréat en Enseignement Islamique - Maison de la Sagesse</li>
-                <li>2024 - Baccalauréat d'Enseignement Général - Série S1 - Maison de la Sagesse</li>
-                <li>2024/2026 - Diplôme de Technicien Supérieur en Télécom et Réseaux - ESP (en cours)</li>
-            </ul>
+            <div class="timeline fade-in" id="timeline">
 
-            <h3>Certificats</h3>
-            <ul>
-                <li>Certificat en Informatique et Internet (Force-N)</li>
-                <li>Certificat en Commerce Digital (Force-N)</li>
-                <li>HCIA-Datacom V1.0 (Huawei Talent Online)</li>
-                <li>Certificat d'Analyste Junior en Cybersécurité (Cisco à travers Force-N)</li>
-            </ul>
-            <h3>Langues</h3>
-            <ul>
-                <li>Francais - Langue maternelle</li>
-                <li>Arabe - Academique/Conversationnel</li>
-                <li>Anglais - Intermediaire</li>
-            </ul>
+                <!-- Education -->
+                <div class="timeline-item" data-type="education">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Baccalauréat en Enseignement Islamique</h3>
+                        <p class="muted">Maison de la Sagesse</p>
+                        <p>Formation générale et religieuse axée sur les sciences islamiques et l'éducation.</p>
+                    </div>
+                    <div class="timeline-year">2022</div>
+                </div>
 
-            <h3>Passe-temps</h3>
-            <ul>
-                <li>Animes/Mangas</li>
-                <li>Football</li>
-                <li>Lecture/Meditation</li>
-            </ul>
+                <div class="timeline-item" data-type="education">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Baccalauréat d'Enseignement Général — Série S1</h3>
+                        <p class="muted">Maison de la Sagesse</p>
+                        <p>Formation scientifique offrant des bases solides en mathématiques et sciences naturelles.</p>
+                    </div>
+                    <div class="timeline-year">2024</div>
+                </div>
+
+                <div class="timeline-item" data-type="education">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Diplôme de Technicien Supérieur — Télécom & Réseaux</h3>
+                        <p class="muted">École Supérieure Polytechnique (ESP)</p>
+                        <p>Parcours en cours (2024–2026) centré sur l'administration réseau, la télécommunication et la sécurité.</p>
+                    </div>
+                    <div class="timeline-year">2024 — en cours</div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="timeline-item" data-type="certif">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Certificat en Informatique et Internet</h3>
+                        <p class="muted">Force‑N</p>
+                        <p>Compétences pratiques en outils bureautiques et fondamentaux d'internet.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
+                <div class="timeline-item" data-type="certif">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Certificat en Commerce Digital</h3>
+                        <p class="muted">Force‑N</p>
+                        <p>Connaissances en e-commerce, marketing digital et outils de vente en ligne.</p>
+                    </div>
+                    <div class="timeline-year">2024</div>
+                </div>
+
+                <div class="timeline-item" data-type="certif">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>HCIA‑Datacom V1.0</h3>
+                        <p class="muted">Huawei Talent Online</p>
+                        <p>Certificat technique couvrant fondamentaux des réseaux et équipements datacom.</p>
+                    </div>
+                    <div class="timeline-year">2024</div>
+                </div>
+
+                <div class="timeline-item" data-type="certif">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Certificat d'Analyste Junior en Cybersécurité</h3>
+                        <p class="muted">Cisco (via Force‑N)</p>
+                        <p>Introduction aux concepts de cybersécurité et pratiques défensives pour réseaux.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+                <div class="timeline-item" data-type="certif">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>CCNA 1</h3>
+                        <p class="muted">Cisco (via ESP Academie)</p>
+                        <p>Introduction aux concepts de réseaux.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
+                <!-- Projects -->
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Projet de virtualisation réseau (SDN)</h3>
+                        <p class="muted">OpenvSwitch, Ryu, Proxmox</p>
+                        <p>Mise en place d'une architecture SDN pour expérimentation et segmentation du trafic.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Réseau de téléphonie IP avec Asterisk</h3>
+                        <p class="muted">Asterisk, VLANs</p>
+                        <p>Conception et déploiement d'un PBX pour communications internes et tests d'interconnexion.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Portfolio Créatif</h3>
+                        <p class="muted">HTML / CSS / JS</p>
+                        <p>Site portfolio avec animations CSS avancées et optimisation responsive — ce site en est un exemple.</p>
+                    </div>
+                    <div class="timeline-year">2025 (en cours)</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Configuration Cisco & Huawei</h3>
+                        <p class="muted">Routage, DHCP</p>
+                        <p>Configuration d'équipements pour la mise en place de services réseau et tests de connectivité.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <h3>Système de surveillance réseau</h3>
+                        <p class="muted">Python, MySQL, Web UI</p>
+                        <p>Interface web pour monitorer bande passante, hôtes et générer alertes (tableaux de bord).</p>
+                    </div>
+                    <div class="timeline-year">2024 (en cours)</div>
+                </div>
+
+            </div>
         </div>
     </section>
+   
+
+    <!-- 'Qui suis-je' section removed -->
 
     <!-- About Section -->
     <section id="about" class="section">
@@ -935,7 +1169,7 @@
             <div class="about-content fade-in">
                 <div class="about-image">
                     <img src="personnalite1.jpg" alt="Créer, sécuriser et innover : transformer chaque idée en réalité numérique." />
-                    <a href="#activites" class="cta-button-about">En savoir plus...</a>
+                    <button id="quickResumeBtn" class="cta-button-about">Résumé rapide</button>
                 </div>
                 <div class="about-text">
                     <h3>Passionné d'informatique, de technologies et d'innovations</h3>
@@ -958,6 +1192,34 @@
             </div>
         </div>
     </section>
+
+        <!-- Quick Resume Modal -->
+        <div id="quickResumeModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="quickResumeClose">&times;</span>
+                <h2>Résumé rapide — Al Hassane BA</h2>
+                <p class="quick-resume-desc">Étudiant en Télécommunications & Réseaux — ESP (2024–2026). Passionné par la cybersécurité et l'administration réseau.</p>
+
+                <h3 class="quick-resume-heading">Diplômes & certifications</h3>
+                <ul>
+                    <li>Baccalauréat en Enseignement Islamique — Maison de la Sagesse (2022)</li>
+                    <li>Baccalauréat S1 — Maison de la Sagesse (2024)</li>
+                    <li>Diplôme de Technicien Supérieur — Télécom & Réseaux — ESP (2024–2026)</li>
+                    <li>HCIA‑Datacom V1.0 (Huawei)</li>
+                    <li>Certificat d'Analyste Junior en Cybersécurité (Cisco)</li>
+                    <li>CCNA 1 : Presentation des Reseaux (Cisco)</li>
+                </ul>
+
+                <h3 class="quick-resume-heading">Compétences clés</h3>
+                <p class="quick-resume-desc">Routage & commutation • Virtualisation • Asterisk PBX • Python • MySQL • Sécurité réseau</p>
+
+                <div class="quick-resume-actions">
+                    <a href="CV_Al_Hassane_Ba.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger CV</a>
+                    <button id="viewParcours" class="btn">Voir Parcours</button>
+                    <button id="contactMeQuick" class="btn">Me contacter</button>
+                </div>
+            </div>
+        </div>
     <!-- Section Projets -->
     <section id="projects" class="section">
         <div class="section-content">
@@ -1185,8 +1447,8 @@
                     <div class="contact-links">
                         <a href="mailto:ahassane.pro@gmail.com">ahassane.pro@gmail.com</a>
                         <a href="tel:+221710342687">+221 71 034 26 87</a>
-                        <a href="https://www.linkedin.com/in/hassanepro" target="_blank">LinkedIn</a>
-                        <a href="https://github.com/geek16th" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/hassanepro" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/geek16th" target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1197,6 +1459,35 @@
     <footer class="footer">
         <p>© 2025 Al Hassane BA. Tous droits réservés. Fait avec passion ♡</p>
     </footer>
+
+    <!-- Floating Helper Widget -->
+    <div id="helperWidget" aria-hidden="false">
+        <button id="widgetToggle" aria-label="Ouvrir l'aide">☰</button>
+        <div id="widgetPanel" role="dialog" aria-label="Assistant" aria-hidden="true">
+            <div class="widget-header">
+                <div class="avatar" aria-hidden="true">
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+                </div>
+                <div class="widget-title">
+                    <div class="name">Hassane</div>
+                    <div class="clock" id="widgetClock">--:--</div>
+                </div>
+                <button id="themeToggle" class="icon" title="Basculer thème">🌓</button>
+            </div>
+
+            <div class="widget-body">
+                <p id="widgetTip">Astuce: Appuyez sur «Conseil aléatoire» pour découvrir quelque chose de nouveau.</p>
+                <div class="widget-actions">
+                    <button id="newTip" class="btn small">Conseil aléatoire</button>
+                    <a href="#contact" class="btn small outline" id="quickContact">Me contacter</a>
+                </div>
+                <div class="widget-footer">
+                    <small>Widget léger — pas de données envoyées.</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Project Modal -->
     <div id="projectModal" class="modal">
@@ -1579,11 +1870,210 @@
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
+    <script>
+    // Quick Resume modal wiring
+    (function(){
+        const openBtn = document.getElementById('quickResumeBtn');
+        const modal = document.getElementById('quickResumeModal');
+        const closeBtn = document.getElementById('quickResumeClose');
+        const viewParcours = document.getElementById('viewParcours');
+        const contactMeQuick = document.getElementById('contactMeQuick');
+
+        if (openBtn && modal) {
+            openBtn.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        if (viewParcours) {
+            viewParcours.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.querySelector('#parcours').scrollIntoView({behavior: 'smooth'});
+            });
+        }
+
+        if (contactMeQuick) {
+            contactMeQuick.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});
+            });
+        }
+    })();
+    </script>
+    <script>
+    // Timeline filtering + reveal animations
+    (function(){
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('#timeline .timeline-item');
+
+        function setFilter(filter) {
+            filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+            items.forEach(it => {
+                const type = it.dataset.type;
+                if (filter === 'all' || filter === type) {
+                    it.classList.remove('hidden');
+                } else {
+                    it.classList.add('hidden');
+                }
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => setFilter(btn.dataset.filter));
+        });
+
+        // Intersection observer to reveal timeline items
+        const tlObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('#timeline .timeline-item').forEach(el => tlObserver.observe(el));
+
+    })();
+    </script>
     <script type="text/javascript">
     (function(){
         emailjs.init({
             publicKey: "rEIFv31C25OY_gTUL",
         });
+    })();
+    </script>
+
+    <!-- Widget script -->
+    <script>
+    (function(){
+        // Elements
+        const widgetToggle = document.getElementById('widgetToggle');
+        const widgetPanel = document.getElementById('widgetPanel');
+        const widgetClock = document.getElementById('widgetClock');
+        const newTipBtn = document.getElementById('newTip');
+        const widgetTip = document.getElementById('widgetTip');
+        const themeToggle = document.getElementById('themeToggle');
+        const avatarEyes = document.querySelectorAll('.avatar .eye');
+
+        const tips = [
+            "Pensez à sauvegarder régulièrement votre code.",
+            "Astuce réseau: Segmentez les VLANs pour isoler le trafic.",
+            "Un bon README aide toujours un recruteur à comprendre un projet.",
+            "Testez les sauvegardes avant d'en dépendre en production.",
+            "Essayez d'automatiser les tâches répétitives avec des scripts.",
+            "La cybersécurité commence par des mots de passe forts et uniques."
+        ];
+
+        // Toggle panel
+        let open = false;
+        widgetToggle.addEventListener('click', () => {
+            open = !open;
+            widgetPanel.setAttribute('aria-hidden', (!open).toString());
+            widgetPanel.style.display = open ? 'block' : 'none';
+            widgetToggle.setAttribute('aria-pressed', open.toString());
+        });
+
+        // Clock
+        function updateClock() {
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            widgetClock.textContent = `${hh}:${mm}`;
+        }
+        updateClock();
+        setInterval(updateClock, 30 * 1000);
+
+        // Random tip
+        function showRandomTip() {
+            const idx = Math.floor(Math.random() * tips.length);
+            widgetTip.textContent = 'Astuce: ' + tips[idx];
+        }
+        newTipBtn.addEventListener('click', showRandomTip);
+
+        // Theme toggle (simple light/dark switching)
+        const THEME_KEY = 'hp_theme_preference';
+        function applyTheme(t) {
+            if (t === 'light') {
+                document.documentElement.style.setProperty('--bg-primary', '#f7f7fb');
+                document.documentElement.style.setProperty('--bg-secondary', '#ffffff');
+                document.documentElement.style.setProperty('--bg-card', '#ffffff');
+                document.documentElement.style.setProperty('--text-primary', '#0a0a0a');
+                document.documentElement.style.setProperty('--text-secondary', '#555');
+            } else {
+                document.documentElement.style.setProperty('--bg-primary', '#0a0a0a');
+                document.documentElement.style.setProperty('--bg-secondary', '#1a1a1a');
+                document.documentElement.style.setProperty('--bg-card', '#252525');
+                document.documentElement.style.setProperty('--text-primary', '#ffffff');
+                document.documentElement.style.setProperty('--text-secondary', '#b0b0b0');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const current = localStorage.getItem(THEME_KEY) || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem(THEME_KEY, next);
+            applyTheme(next);
+        });
+
+        // Initialize theme
+        const stored = localStorage.getItem(THEME_KEY) || 'dark';
+        applyTheme(stored);
+
+        // Little eye-tracking animation (follows mouse when widget open)
+        function moveEyes(xPct) {
+            avatarEyes.forEach((eye, i) => {
+                const dir = (i === 0) ? -1 : 1;
+                eye.style.transform = `translateX(${xPct * dir * 2}px)`;
+            });
+        }
+
+        widgetPanel.addEventListener('mousemove', function(e) {
+            const rect = widgetPanel.getBoundingClientRect();
+            const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+            moveEyes(xPct);
+        });
+        widgetPanel.addEventListener('mouseleave', function() { moveEyes(0); });
+
+        // Quick contact: open contact section when clicked
+        document.getElementById('quickContact').addEventListener('click', function(){
+            // close widget and smooth scroll
+            widgetPanel.style.display = 'none';
+            open = false;
+            document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});
+        });
+
+        // Accessibility: close widget with Escape
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape' && open) {
+                widgetPanel.style.display = 'none';
+                open = false;
+            }
+        });
+
     })();
     </script>
 
