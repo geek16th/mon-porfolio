@@ -969,6 +969,15 @@
     .quick-resume-desc { color: var(--text-secondary); margin-bottom:10px; }
     .quick-resume-heading { color: var(--accent); margin-top:12px; }
     .quick-resume-actions { display:flex; gap:10px; margin-top:12px; }
+    /* Fancy quick resume button */
+    .fancy-resume-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:none; cursor:pointer; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 8px 20px rgba(118,75,162,0.18); transition: transform 0.16s ease, box-shadow 0.16s ease; }
+    .fancy-resume-btn .btn-icon { width:18px; height:18px; fill: rgba(255,255,255,0.95); }
+    .fancy-resume-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(118,75,162,0.22); }
+    .fancy-resume-btn:focus { outline: 3px solid rgba(102,126,234,0.18); outline-offset: 3px; }
+
+    /* Modal content animation */
+    .modal .modal-content { transform: scale(0.98); opacity: 0; transition: transform 180ms ease, opacity 180ms ease; }
+    .modal.modal-open .modal-content { transform: scale(1); opacity: 1; }
     </style>
 </head>
 <body>
@@ -1200,7 +1209,10 @@
             <div class="about-content fade-in">
                 <div class="about-image">
                     <img src="personnalite1.jpg" alt="Créer, sécuriser et innover : transformer chaque idée en réalité numérique." />
-                    <button id="quickResumeBtn" class="cta-button-about">Résumé rapide</button>
+                    <button id="quickResumeBtn" class="cta-button-about fancy-resume-btn" aria-haspopup="dialog">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-icon"><path d="M12 2L3 7v6c0 5 3 9 9 9s9-4 9-9V7l-9-5zm0 2.18L18.6 7 12 10.82 5.4 7 12 4.18zM11 12h2v6h-2v-6z"/></svg>
+                        <span>Résumé rapide</span>
+                    </button>
                 </div>
                 <div class="about-text">
                     <h3>Passionné d'informatique, de technologies et d'innovations</h3>
@@ -1242,7 +1254,7 @@
                 </ul>
 
                 <h3 class="quick-resume-heading">Compétences clés</h3>
-                <p class="quick-resume-desc">Routage & commutation • Virtualisation • Asterisk PBX • Python • MySQL • Sécurité réseau</p>
+                <p class="quick-resume-desc">Routage & commutation • Virtualisation • Asterisk • Python • MySQL • Sécurité réseau</p>
 
                 <div class="quick-resume-actions">
                     <a href="CV_Al_Hassane_Ba.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger CV</a>
@@ -1913,34 +1925,39 @@
         if (openBtn && modal) {
             openBtn.addEventListener('click', () => {
                 modal.style.display = 'flex';
+                modal.classList.add('modal-open');
                 document.body.style.overflow = 'hidden';
             });
         }
 
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
+                modal.classList.remove('modal-open');
+                setTimeout(() => { modal.style.display = 'none'; }, 180);
                 document.body.style.overflow = 'auto';
             });
         }
 
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = 'none';
+                modal.classList.remove('modal-open');
+                setTimeout(() => { modal.style.display = 'none'; }, 180);
                 document.body.style.overflow = 'auto';
             }
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.style.display === 'flex') {
-                modal.style.display = 'none';
+            if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+                modal.classList.remove('modal-open');
+                setTimeout(() => { modal.style.display = 'none'; }, 180);
                 document.body.style.overflow = 'auto';
             }
         });
 
         if (viewParcours) {
             viewParcours.addEventListener('click', () => {
-                modal.style.display = 'none';
+                modal.classList.remove('modal-open');
+                setTimeout(() => { modal.style.display = 'none'; }, 180);
                 document.body.style.overflow = 'auto';
                 document.querySelector('#parcours').scrollIntoView({behavior: 'smooth'});
             });
@@ -1948,7 +1965,8 @@
 
         if (contactMeQuick) {
             contactMeQuick.addEventListener('click', () => {
-                modal.style.display = 'none';
+                modal.classList.remove('modal-open');
+                setTimeout(() => { modal.style.display = 'none'; }, 180);
                 document.body.style.overflow = 'auto';
                 document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});
             });
