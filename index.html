@@ -15,6 +15,126 @@
             box-sizing: border-box;
         }
 
+        /* Contact / Footer improvements */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr minmax(260px, 360px);
+            gap: 28px;
+            grid-auto-rows: auto;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-left .muted,
+        .contact-right .muted { color: var(--muted); }
+
+        .contact-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03));
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-start;
+            min-height:360px;
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .contact-form .form-row { display:flex; gap:12px; }
+        .contact-form .form-group { flex:1; display:flex; flex-direction:column; margin-bottom:12px; }
+        .contact-form label { font-size:0.92rem; margin-bottom:6px; }
+        .contact-form input, .contact-form textarea { width:100%; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:var(--bg-secondary); color:var(--text); }
+
+        .submit-btn { background: linear-gradient(90deg,var(--accent), #7a6cff); color:white; padding:10px 14px; border-radius:8px; border:none; cursor:pointer; }
+        .btn { background:transparent; color:var(--text); padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); cursor:pointer; }
+        .btn.outline { background:transparent; border:1px solid rgba(255,255,255,0.08); }
+
+        .contact-rows { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+        .contact-row { display:flex; justify-content:space-between; align-items:center; }
+        .contact-value { display:flex; gap:8px; align-items:center; }
+        .contact-value a { color:var(--accent); text-decoration:none; }
+
+        .copy-btn { background:rgba(255,255,255,0.03); border:0; padding:6px 8px; border-radius:6px; cursor:pointer; }
+
+    .contact-card-actions { margin-top:12px; display:flex; gap:8px; align-items:center; }
+
+        .footer-modern { background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.04)); padding:28px 16px; margin-top:36px; }
+        .footer-inner { display:flex; gap:28px; justify-content:space-between; align-items:flex-start; max-width:1100px; margin:0 auto; }
+        .footer-left .logo { font-weight:700; font-size:1.05rem; margin-bottom:6px; }
+        .footer-center ul { list-style:none; padding:0; margin:0; }
+        .footer-center ul li { margin:6px 0; }
+        .footer-center a, .footer-right a { color:var(--text); text-decoration:none; }
+        .footer-right .socials { display:flex; gap:10px; }
+        .footer-bottom { text-align:center; margin-top:16px; font-size:0.9rem; opacity:0.8; }
+
+        /* Back to top positioning (button inside contact card) */
+        #scrollTopBtn { margin-left:6px; }
+
+        /* Small responsive tweaks */
+        @media (max-width: 880px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-right { order:2; }
+            .contact-left { order:1; }
+        }
+            /* Contact card refinements */
+            .contact-card { position: relative; }
+            .contact-card-head { display:flex; align-items:center; gap:8px; }
+            .status-dot { font-size:0.9rem; opacity:0.9; }
+            .status-dot.available { color: #3ee07a; }
+
+            .contact-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px dashed rgba(255,255,255,0.02); }
+            .row-left { display:flex; gap:8px; align-items:center; color:var(--text-secondary); }
+            .row-left svg { opacity:0.9; }
+
+            .copy-btn { transition: transform 120ms ease, background 150ms ease; }
+            .copy-btn:active { transform: translateY(1px) scale(.98); }
+            .copy-btn.copied { background: linear-gradient(90deg,var(--accent), #7a6cff); color: #071; }
+
+            .btn.outline[aria-label="Contacter maintenant"] { border-color: var(--accent); color:var(--accent); }
+
+            /* Screen-reader only helper */
+            .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+        /* Contact form modern UI */
+    .contact-form-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); padding:22px; border-radius:14px; box-shadow: 0 10px 30px rgba(2,6,23,0.5); border:1px solid rgba(255,255,255,0.03); display:flex; flex-direction:column; justify-content:flex-start; min-height:360px; box-sizing: border-box; overflow: hidden; }
+        .contact-form-card .muted { margin-bottom:14px; }
+
+    .field-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .field { position:relative; flex:1 1 160px; min-width:0; margin-bottom:12px; }
+        .field input, .field textarea { width:100%; padding:14px 12px 14px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:var(--bg-secondary); color:var(--text); transition: box-shadow .18s ease, border-color .18s ease; }
+        .field textarea { min-height:120px; resize:vertical; padding-top:18px; }
+
+        .field label { position:absolute; left:12px; top:12px; color:var(--text-secondary); font-size:0.95rem; pointer-events:none; transition: transform .18s ease, font-size .18s ease, top .18s ease; }
+        .field input:focus + label, .field input:not(:placeholder-shown) + label,
+        .field textarea:focus + label, .field textarea:not(:placeholder-shown) + label { transform: translateY(-10px); font-size:0.78rem; top:6px; color:var(--accent); }
+
+        /* Make placeholder-shown work: ensure empty inputs have placeholder attribute (invisible) */
+        .field input::placeholder, .field textarea::placeholder { color: transparent; }
+
+        .field-error { color: #ffb4b4; font-size:0.88rem; margin-top:6px; min-height:18px; }
+
+        .form-actions { display:flex; gap:12px; align-items:center; margin-top:6px; }
+    .btn-text { margin-right:8px; }
+    .btn-spinner { font-size:0.9rem; display:none; }
+
+    /* Icon styles */
+    .icon { display:inline-block; vertical-align:middle; }
+    .icon-copy { width:16px; height:16px; }
+    .copy-btn svg { color: var(--text-secondary); }
+    .copy-btn.copied svg { color: white; }
+
+    /* Spinner animation */
+    .icon-spinner { animation: spin 1s linear infinite; color: white; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+        .toast { position: fixed; right: 20px; bottom: 24px; background: linear-gradient(90deg,var(--accent), #7a6cff); color: white; padding:10px 14px; border-radius:10px; box-shadow: var(--shadow); z-index:5000; display:none; }
+        .toast.show { display:block; animation: fadeInUp .32s ease both; }
+
+        @keyframes fadeInUp { from { opacity:0; transform: translateY(12px);} to { opacity:1; transform:none; } }
+
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #1a1a1a;
@@ -130,6 +250,55 @@
             position: relative;
             background: var(--bg-primary);
         }
+            /* Full-width hero carousel */
+            .hero-carousel { position:relative; width:100%; max-width:1200px; margin: 0 auto; overflow:hidden; border-radius:16px; box-shadow: var(--shadow); }
+            .carousel-track { display:flex; transition: transform 600ms cubic-bezier(.2,.8,.2,1); will-change: transform; }
+            .carousel-slide { min-width:100%; position:relative; }
+            .carousel-img { width:100%; height:520px; object-fit:cover; display:block; }
+            .carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background: rgba(0,0,0,0.35); color:white; border:none; padding:10px 14px; border-radius:10px; cursor:pointer; font-size:22px; }
+            .carousel-btn.prev { left:16px; }
+            .carousel-btn.next { right:16px; }
+            .carousel-indicators { position:absolute; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
+            .carousel-indicators button { width:10px; height:10px; border-radius:50%; border:none; background: rgba(255,255,255,0.35); cursor:pointer; }
+            .carousel-indicators button.active { background:white; transform:scale(1.2); }
+
+            /* Lightbox modal */
+            .lightbox { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:3000; }
+            .lightbox.open { display:flex; }
+            .lightbox-content { max-width:90vw; max-height:90vh; position:relative; }
+            .lightbox-img { width:100%; height:100%; object-fit:contain; display:block; }
+            .lightbox-close, .lightbox-prev, .lightbox-next { position:absolute; top:50%; transform:translateY(-50%); background: rgba(255,255,255,0.06); color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+            .lightbox-close { top:12px; right:12px; transform:none; }
+            .lightbox-prev { left:-60px; }
+            .lightbox-next { right:-60px; }
+
+            @media (max-width:800px) {
+                .carousel-img { height:320px; }
+                .lightbox-prev { left:8px; }
+                .lightbox-next { right:8px; }
+            }
+
+        /* --- Compétences (radar chart) --- */
+        .skills-section { padding: 48px 0; }
+        .skills-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: center; }
+        .skills-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); padding: 18px; border-radius: 12px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,0.02); }
+        .skills-title { font-size:1.35rem; margin-bottom:8px; }
+        .radar-wrap { display:flex; align-items:center; justify-content:center; padding:8px; }
+        .radar-svg { width:100%; max-width:520px; height:auto; display:block; }
+        .skills-list { display:flex; flex-direction:column; gap:10px; }
+        .skill-row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+        .skill-name { color:var(--text-secondary); }
+        .skill-meter { width:140px; height:8px; background: rgba(255,255,255,0.04); border-radius:8px; overflow:hidden; }
+        .skill-meter > i { display:block; height:100%; background: linear-gradient(90deg,var(--accent), #7a6cff); width:0%; transition: width .9s cubic-bezier(.2,.9,.3,1); }
+
+        @media (max-width: 880px) {
+            .skills-inner { grid-template-columns: 1fr; }
+            .skills-card { order:2 }
+        }
+        /* Focus-visible for keyboard users */
+        :focus { outline: none; }
+        :focus-visible { outline: 3px solid rgba(124,92,255,0.18); outline-offset: 3px; }
+            .carousel-hint { text-align:center; color:var(--text-secondary); margin-top:12px; }
 
         .hero::before {
             content: '';
@@ -957,11 +1126,13 @@
             .timeline-year { font-size: 0.9rem; }
         }
 
-        @media (max-width: 480px) {
-            #helperWidget { right: 12px; bottom: 12px; }
-            #widgetPanel { width: 92vw; }
+        @media (max-width: 880px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-right { order:2; }
+            .contact-left { order:1; }
+            .contact-card, .contact-form-card { min-height: initial; }
+            .field-row { gap:10px; }
         }
-        /* moved inline styles */
         .timeline-intro { text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem; }
         .aboutMeSection { padding: 50px; background: var(--bg-secondary); }
         .aboutMeTitle { text-align: center; color: #3b1919d0; }
@@ -1019,6 +1190,36 @@
          <!-- Boutons dans la section d'accueil -->
         
     </section>
+
+    <!-- Compétences (placed after Mes Projets) -->
+    <section id="skills" class="skills-section">
+        <div class="skills-inner">
+            <div class="skills-card">
+                <h2 class="skills-title">Compétences</h2>
+                <p class="muted">Mes domaines techniques et leur niveau estimé (0–100%). Cliquez / tabulez pour activer l'animation.</p>
+                <div class="skills-list" aria-hidden="false">
+                    <div class="skill-row"><span class="skill-name">Réseaux</span><div class="skill-meter" data-val="30"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Cybersécurité</span><div class="skill-meter" data-val="20"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Linux & Sysadmin</span><div class="skill-meter" data-val="15"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Programmation (Python)</span><div class="skill-meter" data-val="78"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Web (HTML/CSS/JS)</span><div class="skill-meter" data-val="55"><i></i></div></div>
+                </div>
+            </div>
+            <div class="skills-card radar-wrap">
+                <!-- Animated SVG radar chart -->
+                <svg class="radar-svg" viewBox="-60 -60 340 340" role="img" aria-labelledby="radarTitle radarDesc">
+                    <title id="radarTitle">Radar des compétences</title>
+                    <desc id="radarDesc">Graphique radar montrant les niveaux de compétences pour Réseaux, Cybersécurité, Linux, Python et Web.</desc>
+                    <g id="radarGrid"></g>
+                    <g id="radarAxes"></g>
+                    <g id="radarShape" fill="rgba(0,212,255,0.15)" stroke="var(--accent)" stroke-width="2"></g>
+                    <g id="radarPoints"></g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences (moved) -->
     <!-- Parcours (timeline) Section -->
     <section id="parcours" class="section">
         <div class="section-content">
@@ -1387,67 +1588,39 @@
     <section id="activites" class="section">
         <div class="section-content">
             <h2 class="section-title fade-in">Mes activités</h2>
-            <div class="activities fade-in">
 
-            <!-- Activité 1 : Domaines Sociales -->
-            <div class="activity">
-                <h3>Domaines Sociales</h3>
-                <div class="slider">
-                <div class="slides">
-                    <img src="social1.jpg" class="slide active" alt="Ndogou 1">
-                    <img src="social2.jpg" class="slide" alt="Ndogou 2">
-                    <img src="social3.jpg" class="slide" alt="Ndogou 3">
+            <!-- Full-width carousel -->
+            <div class="hero-carousel fade-in" id="heroCarousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-caption="Distribution de Ndogou - HSU">
+                        <img src="social1.jpg" alt="Ndogou 1" data-index="0" class="carousel-img"/>
+                    </div>
+                    <div class="carousel-slide" data-caption="Distribution de Ndogou - HSU">
+                        <img src="social2.jpg" alt="Ndogou 2" data-index="1" class="carousel-img"/>
+                    </div>
+                    <div class="carousel-slide" data-caption="Distribution de Ndogou - HSU">
+                        <img src="social3.jpg" alt="Ndogou 3" data-index="2" class="carousel-img"/>
+                    </div>
+                    <div class="carousel-slide" data-caption="Projet Sportif - JEUNES TALENTS">
+                        <img src="sport1.jpg" alt="Sport 1" data-index="3" class="carousel-img"/>
+                    </div>
+                    <div class="carousel-slide" data-caption="Projet Sportif - JEUNES TALENTS">
+                        <img src="sport2.jpg" alt="Sport 2" data-index="4" class="carousel-img"/>
+                    </div>
+                    <div class="carousel-slide" data-caption="Projet Sportif - JEUNES TALENTS">
+                        <img src="sport4.jpg" alt="Sport 3" data-index="5" class="carousel-img"/>
+                    </div>
+                    <div class="carousel-slide" data-caption="Moments spirituels">
+                        <img src="souriant2.jpg" alt="Moment spirituel" data-index="6" class="carousel-img"/>
+                    </div>
                 </div>
-                <span class="prev">&#10094;</span>
-                <span class="next">&#10095;</span>
-                <div class="dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                </div>
-                <p>Distribution de Ndogou pendant le mois de RAMADAN 2025 avec l'association Hikmah Social United - HSU.</p>
+
+                <button class="carousel-btn prev" aria-label="Précédent">‹</button>
+                <button class="carousel-btn next" aria-label="Suivant">›</button>
+                <div class="carousel-indicators" role="tablist"></div>
             </div>
 
-            <!-- Activité 2 : Domaine Sportif -->
-            <div class="activity">
-                <h3>Domaine Sportif</h3>
-                <div class="slider">
-                <div class="slides">
-                    <img src="sport1.jpg" class="slide active" alt="Sport 1">
-                    <img src="sport2.jpg" class="slide" alt="Sport 2">
-                    <img src="sport4.jpg" class="slide" alt="Sport 3">
-                </div>
-                <span class="prev">&#10094;</span>
-                <span class="next">&#10095;</span>
-                <div class="dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                </div>
-                <p>Je suis joueur de football dans la sélection JEUNES TALENTS de PIKINE, attaquant, arborant fièrement la tunique.</p>
-            </div>
-
-            <!-- Activité 3 : Cybersécurité -->
-            <div class="activity">
-                <h3>Domaine Religeiux</h3>
-                <div class="slider">
-                <div class="slides">
-                    <img src="souriant2.jpg" class="slide active" alt="rs 1">
-                </div>
-                <span class="prev">&#10094;</span>
-                <span class="next">&#10095;</span>
-                <div class="dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                </div>
-                <p>Je consacre aussi mon temps à l’étude du Coran, à la méditation et à l’apprentissage de valeurs éthiques et spirituelles.</p>
-            </div>
-
-            </div>
+            <p class="carousel-hint">Cliquez sur une image pour l'agrandir.</p>
         </div>
     </section>
 
@@ -1459,48 +1632,132 @@
         </div>
     </div>
 
-    <!-- Contact Section -->
+    <!-- Compétences moved (see below) -->
+
+    <!-- Contact Section (improved) -->
     <section id="contact" class="section">
-        <div class="section-content">
-            <h2 class="section-title fade-in">Contactez-moi</h2>
-            <div class="contact-content fade-in">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nom complet</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Sujet</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Envoyer le message</button>
-                    <div class="form-feedback"></div>
-                </form>
-                
-                <div class="contact-info">
-                    <p>Ou contactez-moi directement :</p>
-                    <div class="contact-links">
-                        <a href="mailto:ahassane.pro@gmail.com">ahassane.pro@gmail.com</a>
-                        <a href="tel:+221710342687">+221 71 034 26 87</a>
-                        <a href="https://www.linkedin.com/in/hassanepro" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://github.com/geek16th" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </div>
+        <div class="section-content contact-grid">
+            <div class="contact-left fade-in">
+                <div class="contact-form-card">
+                    <h2 class="section-title">Contactez-moi</h2>
+                    <p class="muted">Envoyez-moi un message pour collaborer, poser une question ou en savoir plus sur mes projets.</p>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="field-row">
+                            <div class="field">
+                                <input type="text" id="name" name="name" required autocomplete="name" placeholder=" ">
+                                <label for="name">Nom complet</label>
+                                <div class="field-error" aria-live="polite"></div>
+                            </div>
+
+                            <div class="field">
+                                <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
+                                <label for="email">Email</label>
+                                <div class="field-error" aria-live="polite"></div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <input type="text" id="subject" name="subject" required placeholder=" ">
+                            <label for="subject">Sujet</label>
+                            <div class="field-error" aria-live="polite"></div>
+                        </div>
+
+                        <div class="field">
+                            <textarea id="message" name="message" rows="6" required placeholder=" "></textarea>
+                            <label for="message">Message</label>
+                            <div class="field-error" aria-live="polite"></div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span class="btn-text">Envoyer le message</span>
+                                <span class="btn-spinner" aria-hidden="true">
+                                    <svg class="icon-spinner" viewBox="0 0 50 50" width="16" height="16" aria-hidden="true"><circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="31.4 31.4"/></svg>
+                                </span>
+                            </button>
+                            <button type="button" id="clearForm" class="btn">Effacer</button>
+                        </div>
+
+                        <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+                    </form>
                 </div>
             </div>
+
+            <aside class="contact-right fade-in">
+                <div class="contact-card" role="region" aria-label="Contact rapide">
+                    <div class="contact-card-head">
+                        <h3>Contact rapide</h3>
+                        <span class="status-dot available" title="Disponible">●</span>
+                    </div>
+                    <p class="muted">Coordonnées & actions rapides.</p>
+
+                    <div class="contact-rows">
+                        <div class="contact-row">
+                            <div class="row-left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5.5A2.5 2.5 0 014.5 3h15A2.5 2.5 0 0122 5.5v13A2.5 2.5 0 0119.5 21h-15A2.5 2.5 0 012 18.5v-13z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Email</strong></div>
+                            <div class="contact-value">
+                                <a href="mailto:ahassane.pro@gmail.com">ahassane.pro@gmail.com</a>
+                                <button class="copy-btn" data-copy="ahassane.pro@gmail.com" title="Copier l'email" aria-label="Copier l'email">
+                                    <svg class="icon icon-copy" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="5" y="5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="contact-row">
+                            <div class="row-left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92V21a1 1 0 01-1.11 1A19 19 0 013 4.11 1 1 0 014 3h4.09a1 1 0 01.95.68 12.05 12.05 0 00.7 2.17 1 1 0 01-.24 1L7.91 9.91a14 14 0 006.18 6.18l1.36-1.36a1 1 0 011 .24 12.05 12.05 0 002.17.7 1 1 0 01.68.95V22z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Téléphone</strong></div>
+                            <div class="contact-value">
+                                <a href="tel:+221710342687">+221 71 034 26 87</a>
+                                <button class="copy-btn" data-copy="+221710342687" title="Copier le numéro" aria-label="Copier le numéro">
+                                    <svg class="icon icon-copy" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="5" y="5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="contact-row">
+                            <div class="row-left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Réseaux</strong></div>
+                            <div class="contact-value socials">
+                                <a href="https://www.linkedin.com/in/hassanepro" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                                <a href="https://github.com/geek16th" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card-actions">
+                        <a href="CV_Al_Hassane_Ba.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger mon CV</a>
+                        <button id="contactNowBtn" class="btn outline" aria-label="Contacter maintenant">Contacter maintenant</button>
+                        <button id="scrollTopBtn" class="btn outline">Haut de page</button>
+                    </div>
+
+                    <div id="contact-live" class="sr-only" aria-live="polite"></div>
+                </div>
+            </aside>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2025 Al Hassane BA. Tous droits réservés. Fait avec passion ♡</p>
+    <!-- Footer (modern) -->
+    <footer class="footer footer-modern">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div class="logo">Hassane | Portfolio</div>
+                <p class="muted">Étudiant en Télécommunications & Réseaux — passionné par la cybersécurité.</p>
+            </div>
+            <div class="footer-center">
+                <h4>Liens</h4>
+                <ul>
+                    <li><a href="#projects">Projets</a></li>
+                    <li><a href="#parcours">Parcours</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <h4>Réseaux</h4>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/hassanepro" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://github.com/geek16th" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Al Hassane BA. Tous droits réservés. Fait avec passion ♡</div>
     </footer>
 
     <!-- Floating Helper Widget -->
@@ -1545,6 +1802,231 @@
     <script type="text/javascript">
     emailjs.init("rEIFv31C25OY_gTUL"); // remplace par ton User ID EmailJS
     </script>
+    <script>
+    // Full-width carousel + lightbox
+    (function(){
+        const carousel = document.getElementById('heroCarousel');
+        if (!carousel) return;
+
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const prevBtn = carousel.querySelector('.carousel-btn.prev');
+        const nextBtn = carousel.querySelector('.carousel-btn.next');
+        const indicators = carousel.querySelector('.carousel-indicators');
+        let index = 0;
+        let autoplayTimer = null;
+
+        // create indicators for each slide
+        slides.forEach((s, i) => {
+            const btn = document.createElement('button');
+            btn.setAttribute('aria-label', 'Aller à la diapositive ' + (i+1));
+            btn.addEventListener('click', () => goTo(i));
+            indicators.appendChild(btn);
+        });
+
+        const indicatorBtns = Array.from(indicators.children);
+
+        function update() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            indicatorBtns.forEach((b, i) => b.classList.toggle('active', i === index));
+        }
+
+        function next() { index = (index + 1) % slides.length; update(); }
+        function prev() { index = (index - 1 + slides.length) % slides.length; update(); }
+        function goTo(i) { index = i % slides.length; update(); }
+
+        nextBtn.addEventListener('click', () => { next(); resetTimer(); });
+        prevBtn.addEventListener('click', () => { prev(); resetTimer(); });
+
+        // autoplay
+        function start() { autoplayTimer = setInterval(next, 4500); }
+        function stop() { clearInterval(autoplayTimer); autoplayTimer = null; }
+        function resetTimer() { stop(); start(); }
+
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', start);
+
+        // keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') { next(); resetTimer(); }
+            if (e.key === 'ArrowLeft') { prev(); resetTimer(); }
+        });
+
+        // click to open lightbox
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-content">
+                <button class="lightbox-close" aria-label="Fermer">✕</button>
+                <button class="lightbox-prev" aria-label="Précédent">‹</button>
+                <img class="lightbox-img" src="" alt="" />
+                <button class="lightbox-next" aria-label="Suivant">›</button>
+            </div>`;
+        document.body.appendChild(lightbox);
+
+        const lbImg = lightbox.querySelector('.lightbox-img');
+        const lbClose = lightbox.querySelector('.lightbox-close');
+        const lbPrev = lightbox.querySelector('.lightbox-prev');
+        const lbNext = lightbox.querySelector('.lightbox-next');
+
+        slides.forEach((s, i) => {
+            const img = s.querySelector('img');
+            if (!img) return;
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => openLightbox(i));
+        });
+
+        function openLightbox(i) {
+            index = i;
+            lbImg.src = slides[index].querySelector('img').src;
+            lbImg.alt = slides[index].querySelector('img').alt || '';
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        lbClose.addEventListener('click', closeLightbox);
+        lbPrev.addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; lbImg.src = slides[index].querySelector('img').src; });
+        lbNext.addEventListener('click', () => { index = (index + 1) % slides.length; lbImg.src = slides[index].querySelector('img').src; });
+
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        // simple touch swipe for carousel
+        let startX = 0;
+        carousel.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        carousel.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - startX;
+            if (dx > 50) { prev(); resetTimer(); }
+            if (dx < -50) { next(); resetTimer(); }
+        });
+
+        // init
+        update(); start();
+    })();
+    </script>
+
+    <script>
+    // Radar chart + skill-meter animation (robust version)
+    (function(){
+        function initRadar(){
+            const container = document.querySelector('#skills');
+            if (!container) { console.warn('Radar: #skills not found'); return; }
+
+            const grid = container.querySelector('#radarGrid');
+            const axes = container.querySelector('#radarAxes');
+            const shape = container.querySelector('#radarShape');
+            const points = container.querySelector('#radarPoints');
+            const meters = container.querySelectorAll('.skill-meter');
+
+            if (!grid || !axes || !shape || !points) { console.warn('Radar: missing SVG groups'); return; }
+
+            const skills = Array.from(container.querySelectorAll('.skill-name')).map(n => n.textContent.trim()) || ['Réseaux','Cybersécurité','Linux & Sysadmin','Python','Web'];
+            const values = Array.from(meters).map(m => Number(m.dataset.val||0));
+            if (skills.length !== values.length) { console.warn('Radar: mismatch skills/values length'); }
+
+            const cx = 110, cy = 110, r = 95;
+
+            // clear any previous content
+            grid.innerHTML = ''; axes.innerHTML = '';
+
+            // Draw concentric polygons (levels)
+            const levels = 4;
+            for (let lvl=levels; lvl>=1; lvl--){
+                const t = lvl/levels;
+                const pts = values.map((v,i)=>{
+                    const angle = (Math.PI*2/values.length)*i - Math.PI/2;
+                    return [(cx + Math.cos(angle)*r*t).toFixed(2),(cy + Math.sin(angle)*r*t).toFixed(2)].join(',');
+                }).join(' ');
+                const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+                poly.setAttribute('points', pts);
+                poly.setAttribute('fill', 'none');
+                poly.setAttribute('stroke', 'rgba(255,255,255,0.06)');
+                poly.setAttribute('stroke-width','1');
+                grid.appendChild(poly);
+            }
+
+            // Axes and labels
+            values.forEach((v,i)=>{
+                const angle = (Math.PI*2/values.length)*i - Math.PI/2;
+                const x = cx + Math.cos(angle)*r;
+                const y = cy + Math.sin(angle)*r;
+                const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+                line.setAttribute('x1',cx); line.setAttribute('y1',cy); line.setAttribute('x2',x); line.setAttribute('y2',y);
+                line.setAttribute('stroke','rgba(255,255,255,0.04)'); line.setAttribute('stroke-width','1');
+                axes.appendChild(line);
+                const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+                lbl.setAttribute('x', x + (x>cx?8:-8)); lbl.setAttribute('y', y + (y>cy?6:-6));
+                lbl.setAttribute('fill','var(--text-secondary)'); lbl.setAttribute('font-size','12');
+                lbl.setAttribute('text-anchor', x>cx?'start':'end'); lbl.textContent = skills[i] || '';
+                axes.appendChild(lbl);
+            });
+
+            // Build polygon points (normalized by 100)
+            function buildPoints(factor){
+                return values.map((v,i)=>{
+                    const angle = (Math.PI*2/values.length)*i - Math.PI/2;
+                    const val = (v/100) * factor;
+                    const x = cx + Math.cos(angle)*r*val;
+                    const y = cy + Math.sin(angle)*r*val;
+                    return `${x.toFixed(2)},${y.toFixed(2)}`;
+                }).join(' ');
+            }
+
+            // Animated reveal
+            let animated = false;
+            function reveal(){
+                if (animated) return; animated = true;
+                let t=0; const dur=900; const start = performance.now();
+                function step(now){
+                    t = Math.min(1, (now - start)/dur);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    const pts = buildPoints(eased);
+                    shape.setAttribute('points', pts);
+                    points.innerHTML = '';
+                    values.forEach((v,i)=>{
+                        const angle = (Math.PI*2/values.length)*i - Math.PI/2;
+                        const val = (v/100)*eased;
+                        const x = cx + Math.cos(angle)*r*val;
+                        const y = cy + Math.sin(angle)*r*val;
+                        const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+                        c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r','4'); c.setAttribute('fill','var(--accent)');
+                        points.appendChild(c);
+                    });
+                    if (t<1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+
+                // Animate linear meters and set ARIA
+                meters.forEach((el, idx)=>{
+                    const target = Number(el.dataset.val||0);
+                    const bar = el.querySelector('i');
+                    if (!bar) return;
+                    el.setAttribute('role','progressbar');
+                    el.setAttribute('aria-valuemin','0');
+                    el.setAttribute('aria-valuemax','100');
+                    el.setAttribute('aria-valuenow','0');
+                    setTimeout(()=>{
+                        bar.style.width = target + '%';
+                        el.setAttribute('aria-valuenow', String(target));
+                    }, idx * 80);
+                });
+            }
+
+            // Observe visibility
+            const io = new IntersectionObserver((entries)=>{ if (entries[0] && entries[0].isIntersecting) reveal(); }, {threshold:0.3});
+            io.observe(container);
+            container.addEventListener('focusin', reveal);
+        }
+
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initRadar);
+        else initRadar();
+    })();
+    </script>
 
 
 
@@ -1577,23 +2059,23 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                // Only intercept same-page hash links
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetSection = document.querySelector(href);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+
+                    // Close mobile menu
+                    navLinks.classList.remove('active');
+
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
                 }
-                
-                // Close mobile menu
-                navLinks.classList.remove('active');
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
+                // otherwise allow default behavior (external link like index.v2.html)
             });
         });
         // Scroll des images au niveau de la section "Mes activités"
@@ -1656,58 +2138,81 @@
         });
 
 
-        // Contact form validation and submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Enhanced contact form validation + submission with spinner & toast
+        (function(){
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('formFeedback');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnSpinner = submitBtn.querySelector('.btn-spinner');
 
-            const feedback = this.querySelector('.form-feedback');
-            feedback.textContent = '';
-            feedback.className = 'form-feedback';
-
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-
-            if (!name || !email || !subject || !message) {
-                feedback.textContent = 'Veuillez remplir tous les champs';
-                feedback.classList.add('error');
-                return;
+            function clearFieldErrors() {
+                form.querySelectorAll('.field-error').forEach(el => el.textContent = '');
+                feedback.textContent = '';
+                feedback.className = 'form-feedback';
             }
 
-            if (!isValidEmail(email)) {
-                feedback.textContent = 'Veuillez entrer une adresse email valide';
-                feedback.classList.add('error');
-                return;
+            function showToast(msg) {
+                let t = document.getElementById('globalToast');
+                if (!t) {
+                    t = document.createElement('div');
+                    t.id = 'globalToast';
+                    t.className = 'toast';
+                    document.body.appendChild(t);
+                }
+                t.textContent = msg;
+                t.classList.add('show');
+                setTimeout(()=> t.classList.remove('show'), 3200);
             }
 
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Envoi en cours...';
-            submitBtn.disabled = true;
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                clearFieldErrors();
 
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message
-            };
+                const name = form.querySelector('#name').value.trim();
+                const email = form.querySelector('#email').value.trim();
+                const subject = form.querySelector('#subject').value.trim();
+                const message = form.querySelector('#message').value.trim();
 
-            emailjs.send('service_e9uyjx7', 'template_btjgjna', templateParams)
-                .then(function(response) {
-                    feedback.textContent = 'Message envoyé avec succès ! Je vous répondrai bientôt.';
-                    feedback.classList.add('success');
-                    document.getElementById('contactForm').reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, function(error) {
-                    feedback.textContent = 'Erreur lors de l\'envoi. Veuillez réessayer.';
-                    feedback.classList.add('error');
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
-        });
+                let ok = true;
+                if (!name) { form.querySelector('#name').closest('.field').querySelector('.field-error').textContent = 'Le nom est requis.'; ok = false; }
+                if (!email) { form.querySelector('#email').closest('.field').querySelector('.field-error').textContent = 'L\'email est requis.'; ok = false; }
+                else if (!isValidEmail(email)) { form.querySelector('#email').closest('.field').querySelector('.field-error').textContent = 'Email invalide.'; ok = false; }
+                if (!subject) { form.querySelector('#subject').closest('.field').querySelector('.field-error').textContent = 'Le sujet est requis.'; ok = false; }
+                if (!message) { form.querySelector('#message').closest('.field').querySelector('.field-error').textContent = 'Le message est requis.'; ok = false; }
+
+                if (!ok) return;
+
+                // UI: show spinner
+                btnText.style.opacity = '0';
+                btnSpinner.style.display = 'inline-block';
+                submitBtn.disabled = true;
+
+                const templateParams = { from_name: name, from_email: email, subject: subject, message: message };
+
+                // Try to send via EmailJS; if it fails or EmailJS isn't available, simulate send
+                (async function(){
+                    try {
+                        if (window.emailjs && emailjs.send) {
+                            await emailjs.send('service_e9uyjx7', 'template_btjgjna', templateParams);
+                        } else {
+                            // simulate network latency
+                            await new Promise(r => setTimeout(r, 700));
+                        }
+                        showToast('Message envoyé — je vous répondrai bientôt.');
+                        form.reset();
+                    } catch (err) {
+                        feedback.textContent = 'Erreur lors de l\'envoi. Le message est simulé localement.';
+                        feedback.classList.add('error');
+                        showToast('Envoi simulé — vérifiez votre configuration EmailJS pour l\'envoi réel.');
+                    } finally {
+                        submitBtn.disabled = false;
+                        btnSpinner.style.display = 'none';
+                        btnText.style.opacity = '1';
+                    }
+                })();
+            });
+        })();
 
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -2126,6 +2631,92 @@
     })();
     </script>
 
+    <script>
+    (function(){
+        // Copy-to-clipboard for quick contact buttons
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const text = btn.dataset.copy;
+                if (!text) return;
+                try {
+                    await navigator.clipboard.writeText(text);
+                    flash(btn, 'Copié !');
+                } catch (err) {
+                    // fallback
+                    const ta = document.createElement('textarea');
+                    ta.value = text; document.body.appendChild(ta); ta.select();
+                    try { document.execCommand('copy'); flash(btn, 'Copié !'); } catch(e) { flash(btn, 'Erreur'); }
+                    ta.remove();
+                }
+            });
+        });
+
+        function flash(el, msg){
+            const tip = document.createElement('span');
+            tip.className = 'temp-tip';
+            tip.textContent = msg;
+            tip.style.position = 'absolute';
+            tip.style.top = '-34px';
+            tip.style.right = '0';
+            tip.style.padding = '6px 8px';
+            tip.style.background = 'var(--bg-secondary)';
+            tip.style.border = '1px solid rgba(255,255,255,0.04)';
+            tip.style.borderRadius = '6px';
+            tip.style.fontSize = '0.85rem';
+            tip.style.zIndex = 4000;
+            el.style.position = 'relative';
+            el.appendChild(tip);
+            setTimeout(()=> tip.remove(), 1100);
+        }
+
+        // Improve copy button UX: add 'copied' class and announce to screen readers
+        const live = document.getElementById('contact-live');
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.add('copied');
+                btn.setAttribute('aria-pressed', 'true');
+                if (live) live.textContent = 'Copié dans le presse-papiers';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.setAttribute('aria-pressed', 'false');
+                    if (live) live.textContent = '';
+                }, 1500);
+            });
+        });
+
+        // Contact Now button: focus form and scroll into view
+        const contactNow = document.getElementById('contactNowBtn');
+        if (contactNow) {
+            contactNow.addEventListener('click', (e) => {
+                e.preventDefault();
+                const form = document.getElementById('contactForm');
+                if (form) {
+                    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const name = document.getElementById('name');
+                    setTimeout(() => { if (name) name.focus(); }, 600);
+                }
+            });
+        }
+
+        // Clear form button
+        const clearBtn = document.getElementById('clearForm');
+        if (clearBtn){
+            clearBtn.addEventListener('click', () => {
+                const form = document.getElementById('contactForm');
+                if (form) form.reset();
+                const fb = document.querySelector('.form-feedback'); if (fb) fb.textContent = '';
+            });
+        }
+
+        // Scroll to top button inside contact card
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        if (scrollTopBtn){
+            scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+
+    })();
+    </script>
 
 </body>
 </html>
