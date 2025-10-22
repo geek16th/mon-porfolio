@@ -894,13 +894,59 @@
         .modal-content {
             position: relative;
             background-color: var(--bg-card);
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
+            margin: 4% auto;
+            padding: 12px; /* less padding so modal hugs image */
+            border-radius: 14px;
+            width: auto;
+            max-width: min(1100px, 95%);
+            max-height: 90vh;
+            box-sizing: border-box;
+            overflow: visible; /* let inner elements manage overflow */
+            display: block;
+        }
+
+        /* Modal (project) grid layout */
+        .modal-grid {
+            display: grid;
+            grid-template-columns: auto 1fr; /* image column auto-sizes to image natural width */
+            gap: 14px;
+            align-items: start;
+        }
+        .modal-image-wrap {
+            position: relative;
+            display:flex;
+            align-items:flex-start;
+            justify-content:center;
+        }
+        /* Make image size drive the modal; allow tall images but cap by viewport */
+        .modal-image {
+            display:block;
+            width: auto;
+            max-width: 560px; /* reasonable max */
+            max-height: calc(90vh - 40px);
+            height: auto;
+            object-fit: contain;
+            border-radius:10px;
+            box-shadow: var(--shadow);
+            background: rgba(255,255,255,0.02);
+        }
+        .modal-details { color:var(--text); padding:6px 8px; }
+        .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45); color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+        .modal-nav.prev { left: 6px; }
+        .modal-nav.next { right: 6px; }
+    .image-nav { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.45); color: white; border: none; padding: 6px 8px; border-radius: 6px; cursor: pointer; z-index: 20; }
+    .image-nav.prev { right: 56px; }
+    .image-nav.next { right: 8px; }
+
+    .modal-thumbs { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+    .modal-thumb { width:64px; height:48px; object-fit:cover; border-radius:6px; cursor:pointer; opacity:0.85; border:2px solid transparent; }
+    .modal-thumb.active { opacity:1; border-color: var(--accent); }
+
+        @media (max-width: 880px) {
+            .modal-grid { grid-template-columns: 1fr; }
+            .modal-image { max-width: 100%; max-height: 55vh; }
+            .modal-nav.prev { left: 8px; }
+            .modal-nav.next { right: 8px; }
         }
 
         .close {
@@ -984,39 +1030,7 @@
             transform: translateY(0);
         }
 
-        /* Loading animation */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--bg-secondary);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        /* Loading animation removed per user request */
         /* Floating helper widget styles */
         #helperWidget {
             position: fixed;
@@ -1152,10 +1166,7 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <!-- Loading screen intentionally removed -->
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -1624,13 +1635,7 @@
         </div>
     </section>
 
-    <!-- Modale -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeProjectModal()">&times;</span>
-            <div id="modalContent"></div>
-        </div>
-    </div>
+    <!-- (old duplicate modal removed) -->
 
     <!-- Compétences moved (see below) -->
 
@@ -1789,12 +1794,25 @@
         </div>
     </div>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeProjectModal()">&times;</span>
-            <div id="modalContent">
-                <!-- Content will be dynamically inserted here -->
+    <!-- Project Modal (single, accessible) -->
+    <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+        <div class="modal-content" role="document">
+            <button class="close" id="projectModalClose" aria-label="Fermer la fenêtre">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-image-wrap">
+                    <!-- project-level prev/next (projects) -->
+                    <button class="modal-nav prev" id="modalPrev" aria-label="Précédent">‹</button>
+                    <img id="modalImage" class="modal-image" src="" alt="" loading="lazy" aria-hidden="true"/>
+                    <!-- image-level navigation (within project) -->
+                    <button class="image-nav prev" id="modalImgPrev" aria-label="Image précédente">◂</button>
+                    <button class="image-nav next" id="modalImgNext" aria-label="Image suivante">▸</button>
+                    <button class="modal-nav next" id="modalNext" aria-label="Suivant">›</button>
+                </div>
+                <div id="modalContent" class="modal-details">
+                    <h2 id="modalTitle"></h2>
+                    <div id="modalBody"></div>
+                    <div id="modalThumbnails" class="modal-thumbs" aria-hidden="false" aria-label="Miniatures"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -1820,15 +1838,22 @@
         slides.forEach((s, i) => {
             const btn = document.createElement('button');
             btn.setAttribute('aria-label', 'Aller à la diapositive ' + (i+1));
+            btn.setAttribute('role', 'tab');
             btn.addEventListener('click', () => goTo(i));
             indicators.appendChild(btn);
+            // ensure images lazy-load
+            const img = s.querySelector('img'); if (img && !img.getAttribute('loading')) img.setAttribute('loading','lazy');
         });
 
         const indicatorBtns = Array.from(indicators.children);
 
         function update() {
             track.style.transform = `translateX(-${index * 100}%)`;
-            indicatorBtns.forEach((b, i) => b.classList.toggle('active', i === index));
+            indicatorBtns.forEach((b, i) => {
+                const active = i === index;
+                b.classList.toggle('active', active);
+                b.setAttribute('aria-current', active ? 'true' : 'false');
+            });
         }
 
         function next() { index = (index + 1) % slides.length; update(); }
@@ -2031,12 +2056,7 @@
 
 
     <script>
-        // Loading animation
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 1000);
-        });
+        // Loader removed by user request
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -2219,107 +2239,192 @@
             return emailRegex.test(email);
         }
 
-        // Project modal functionality
+        // Project modal functionality (accessible, with prev/next, focus management)
         const projectDetails = {
             projetSDN: {
                 title: "Projet de virtualisation réseau (SDN)",
                 description: "Mise en place d'un réseau SDN avec OpenvSwitch et Ryu dans Proxmox.",
-                features: [
-                    "Contrôleur SDN Ryu",
-                    "Switchs virtuels avec OpenvSwitch",
-                    "Virtualisation dans Proxmox",
-                    "Segmentation du trafic"
-                ],
+                images: ["projetsdn.jpg"],
+                features: ["Contrôleur SDN Ryu","Switchs virtuels avec OpenvSwitch","Virtualisation dans Proxmox","Segmentation du trafic"],
                 technologies: ["SDN", "OpenvSwitch", "Ryu", "Proxmox", "Docker"]
             },
             telephonieIP: {
                 title: "Réseau de téléphonie IP avec Asterisk",
                 description: "Création d’un réseau de téléphonie IP au sein de l’ESP avec Asterisk.",
-                features: [
-                    "Configuration du serveur Asterisk",
-                    "Mise en place des VLANs",
-                    "Communication inter-départements"
-                ],
+                images: ["telephonieIP.jpg", "telephonieIP_1.jpg"],
+                features: ["Configuration du serveur Asterisk","Mise en place des VLANs","Communication inter-départements"],
                 technologies: ["Linux", "Asterisk", "VoIP", "VLAN"]
             },
             ciscoHuawei: {
                 title: "Configuration Cisco & Huawei",
                 description: "Configuration de routeurs et switchs pour un serveur DHCP et routage IP.",
-                features: [
-                    "Configuration de base",
-                    "Mise en place du DHCP",
-                    "Tests de connectivité"
-                ],
+                images: ["proejt_vacc1.jpg"],
+                features: ["Configuration de base","Mise en place du DHCP","Tests de connectivité"],
                 technologies: ["Cisco", "Huawei", "DHCP", "Protocole IP"]
             },
             surveillanceReseau: {
                 title: "Système de surveillance réseau",
                 description: "Interface web pour surveiller la bande passante, les hôtes et générer des alertes.",
-                features: [
-                    "Visualisation en temps réel",
-                    "Tableaux de bord interactifs",
-                    "Alertes automatiques"
-                ],
+                images: ["sas1.jpg"],
+                features: ["Visualisation en temps réel","Tableaux de bord interactifs","Alertes automatiques"],
                 technologies: ["Python", "MySQL", "Frontend", "Backend", "Web Interface"]
             },
             portfolio: {
                 title: "Portfolio Créatif",
                 description: "Site portfolio avec animations CSS avancées et optimisation SEO.",
-                features: [
-                    "Animations CSS avancées",
-                    "Design responsive",
-                    "Optimisation SEO"
-                ],
-                technologies: ["HTML5", "CSS3", "JavaScript", "Vscode"]
+                images: ["portfolio1.PNG"],
+                features: ["Animations CSS avancées","Design responsive","Optimisation SEO"],
+                technologies: ["HTML5", "CSS3", "JavaScript", "Vscode", "GitHub"]
             }
         };
 
-       function openProjectModal(projectKey) {
-            const project = projectDetails[projectKey];
-            if (!project) return;
-
-            const modalContent = document.getElementById('modalContent');
-            modalContent.innerHTML = `
-                <h2>${project.title}</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">${project.description}</p>
-                
-                <h3 style="color: var(--accent); margin-bottom: 1rem;">Fonctionnalités principales</h3>
-                <ul style="margin-bottom: 2rem; color: var(--text-secondary);">
-                    ${project.features.map(feature => `<li style="margin-bottom: 0.5rem;">${feature}</li>`).join('')}
-                </ul>
-                
-                <h3 style="color: var(--accent); margin-bottom: 1rem;">Technologies utilisées</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                    ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                </div>
-            `;
-
+        (function(){
             const modal = document.getElementById('projectModal');
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+            if (!modal) return;
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const closeBtn = document.getElementById('projectModalClose');
+            const prevBtn = document.getElementById('modalPrev');
+            const nextBtn = document.getElementById('modalNext');
 
-        function closeProjectModal() {
-            const modal = document.getElementById('projectModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+            const keys = Object.keys(projectDetails);
+            let currentIndex = 0; // project index
+            let currentImageIndex = 0; // image index within project
+            let lastFocused = null;
 
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            const modal = document.getElementById('projectModal');
-            if (e.target === modal) {
-                closeProjectModal();
+            function renderImageForProject(p, imgIdx){
+                const imgs = Array.isArray(p.images) && p.images.length ? p.images : (p.image ? [p.image] : []);
+                const src = imgs[imgIdx] || '';
+                if (src) {
+                    modalImage.src = src;
+                    modalImage.alt = p.title || '';
+                    modalImage.setAttribute('aria-hidden','false');
+                } else {
+                    modalImage.src = '';
+                    modalImage.alt = '';
+                    modalImage.setAttribute('aria-hidden','true');
+                }
             }
-        });
 
-        // Keyboard navigation for modal
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeProjectModal();
+            function renderThumbnailsForProject(p, activeIdx){
+                const container = document.getElementById('modalThumbnails');
+                container.innerHTML = '';
+                const imgs = Array.isArray(p.images) && p.images.length ? p.images : (p.image ? [p.image] : []);
+                imgs.forEach((s, i) => {
+                    const t = document.createElement('img');
+                    t.src = s;
+                    t.loading = 'lazy';
+                    t.className = 'modal-thumb' + (i===activeIdx? ' active':'');
+                    t.alt = p.title ? (p.title + ' — miniature ' + (i+1)) : '';
+                    t.addEventListener('click', ()=>{
+                        currentImageIndex = i;
+                        renderImageForProject(p, currentImageIndex);
+                        // update active class
+                        container.querySelectorAll('.modal-thumb').forEach((el, idx)=> el.classList.toggle('active', idx===i));
+                    });
+                    container.appendChild(t);
+                });
             }
-        });
+
+            function renderProject(idx){
+                const key = keys[idx];
+                const p = projectDetails[key];
+                if (!p) return;
+                modalTitle.textContent = p.title || '';
+                modalBody.innerHTML = `
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">${p.description}</p>
+                    <h4 style="color: var(--accent); margin-bottom: .5rem;">Fonctionnalités</h4>
+                    <ul style="margin-bottom: 1rem; color: var(--text-secondary);">
+                        ${p.features.map(f=>`<li>${f}</li>`).join('')}
+                    </ul>
+                    <h4 style="color: var(--accent); margin-bottom: .5rem;">Technologies</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                        ${p.technologies.map(t=>`<span class=\"tech-tag\">${t}</span>`).join('')}
+                    </div>
+                `;
+                // reset image index and render
+                const imgs = Array.isArray(p.images) && p.images.length ? p.images : (p.image ? [p.image] : []);
+                currentImageIndex = 0;
+                renderImageForProject(p, currentImageIndex);
+                renderThumbnailsForProject(p, currentImageIndex);
+                // disable image nav buttons if only one image
+                const hasMultiple = imgs.length > 1;
+                document.getElementById('modalImgPrev').style.display = hasMultiple ? 'inline-block' : 'none';
+                document.getElementById('modalImgNext').style.display = hasMultiple ? 'inline-block' : 'none';
+            }
+
+            function open(idx){
+                currentIndex = typeof idx === 'number' ? idx : 0;
+                renderProject(currentIndex);
+                modal.style.display = 'flex';
+                modal.classList.add('modal-open');
+                modal.setAttribute('aria-hidden','false');
+                lastFocused = document.activeElement;
+                // trap focus
+                const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusable && focusable.length) focusable[0].focus();
+                document.body.style.overflow = 'hidden';
+            }
+
+            function close(){
+                modal.classList.remove('modal-open');
+                modal.setAttribute('aria-hidden','true');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                if (lastFocused && lastFocused.focus) lastFocused.focus();
+            }
+
+            function showNext(){ currentIndex = (currentIndex + 1) % keys.length; renderProject(currentIndex); }
+            function showPrev(){ currentIndex = (currentIndex - 1 + keys.length) % keys.length; renderProject(currentIndex); }
+
+            // Expose to global for onclick handlers on project cards
+            window.openProjectModal = function(key){
+                const idx = keys.indexOf(key);
+                open(idx >= 0 ? idx : 0);
+            };
+            window.closeProjectModal = close;
+
+            // wire up buttons
+            closeBtn.addEventListener('click', close);
+            nextBtn.addEventListener('click', showNext);
+            prevBtn.addEventListener('click', showPrev);
+
+            // image navigation handlers
+            const modalImgPrev = document.getElementById('modalImgPrev');
+            const modalImgNext = document.getElementById('modalImgNext');
+            modalImgPrev.addEventListener('click', ()=>{
+                const p = projectDetails[keys[currentIndex]];
+                const imgs = Array.isArray(p.images)&&p.images.length? p.images : (p.image? [p.image]:[]);
+                if (!imgs.length) return;
+                currentImageIndex = (currentImageIndex - 1 + imgs.length) % imgs.length;
+                renderImageForProject(p, currentImageIndex);
+                renderThumbnailsForProject(p, currentImageIndex);
+            });
+            modalImgNext.addEventListener('click', ()=>{
+                const p = projectDetails[keys[currentIndex]];
+                const imgs = Array.isArray(p.images)&&p.images.length? p.images : (p.image? [p.image]:[]);
+                if (!imgs.length) return;
+                currentImageIndex = (currentImageIndex + 1) % imgs.length;
+                renderImageForProject(p, currentImageIndex);
+                renderThumbnailsForProject(p, currentImageIndex);
+            });
+
+            // keyboard nav inside modal: project nav (Left/Right) and image nav (Shift+Left/Right)
+            document.addEventListener('keydown', function(e){
+                if (modal.getAttribute('aria-hidden') === 'false'){
+                    if (e.key === 'Escape') close();
+                    if (e.key === 'ArrowRight' && !e.shiftKey) showNext();
+                    if (e.key === 'ArrowLeft' && !e.shiftKey) showPrev();
+                    if (e.key === 'ArrowRight' && e.shiftKey) modalImgNext.click();
+                    if (e.key === 'ArrowLeft' && e.shiftKey) modalImgPrev.click();
+                }
+            });
+
+            // click outside to close
+            modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+
+        })();
 
         // Update active nav link on scroll
         window.addEventListener('scroll', function() {
@@ -2513,13 +2618,7 @@
 
     })();
     </script>
-    <script type="text/javascript">
-    (function(){
-        emailjs.init({
-            publicKey: "rEIFv31C25OY_gTUL",
-        });
-    })();
-    </script>
+    <!-- emailjs already initialised above -->
 
     <!-- Widget script -->
     <script>
