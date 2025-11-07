@@ -1903,9 +1903,15 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+   <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
     <script type="text/javascript">
-    emailjs.init("YsLDkqd-8cd0oo9_7"); // remplace par ton User ID EmailJS
+    (function(){
+        emailjs.init({
+            publicKey: "YsLDkqd-8cd0oo9_7",
+        });
+    })();
     </script>
     <!-- Hero JS enhancements: typing effect + reveal -->
     <script>
