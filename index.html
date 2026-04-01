@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Hassane Ba - Portfolio </title>
+    <title>Al Hassane Ba — Réseaux & Cybersécurité | Portfolio</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -56,6 +56,20 @@
         .contact-row { display:flex; justify-content:space-between; align-items:center; }
         .contact-value { display:flex; gap:8px; align-items:center; }
         .contact-value a { color:var(--accent); text-decoration:none; }
+        .contact-value.emails {
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+        .contact-email-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 100%;
+        }
+        .contact-email-item a {
+            word-break: break-all;
+        }
 
         .copy-btn { background:rgba(255,255,255,0.03); border:0; padding:6px 8px; border-radius:6px; cursor:pointer; }
 
@@ -496,6 +510,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            align-items: stretch;
         }
 
         .project-card {
@@ -505,6 +520,9 @@
             transition: var(--transition);
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .project-card:hover {
@@ -550,6 +568,8 @@
         .project-links {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .project-link {
@@ -560,6 +580,8 @@
             border-radius: 25px;
             font-weight: bold;
             transition: var(--transition);
+            min-width: 135px;
+            text-align: center;
         }
 
         .project-link:hover {
@@ -568,24 +590,32 @@
 
         .project-info {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .project-info h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--accent);
+            line-height: 1.35;
+            min-height: 3.5rem;
         }
 
         .project-info p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             margin-bottom: 1rem;
+            line-height: 1.6;
+            min-height: 4.4rem;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+            margin-top: auto;
         }
 
         .tech-tag {
@@ -1136,6 +1166,19 @@
         .timeline-dot.project { background: #ffb86b; }
         .timeline-body h3 { margin-bottom:6px; color: var(--accent); }
         .timeline-body .muted { color: var(--text-secondary); font-size:0.9rem; margin-bottom:6px; }
+        .timeline-body .cert-link {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.82rem;
+        }
+        .timeline-body .cert-link:hover {
+            border-color: var(--accent);
+        }
         .timeline-year { text-align:right; color: var(--text-secondary); font-weight:700; }
         .timeline-item.hidden { display:none !important; }
 
@@ -1358,7 +1401,7 @@
 
             <div class="hero-ctas" role="toolbar" aria-label="Actions principales">
                 <a href="#projects" class="cta-button" aria-label="Voir mes projets">Découvrez mes projets</a>
-                <a href="https://drive.google.com/file/d/1VyHmNfDsz8ysJ-wzdULbDYFv4q5ytoWl/view?usp=sharing" class="cta-button secondary" target="_blank" rel="noopener" aria-label="Télécharger mon CV v1.0">Télécharger mon CV v1.0</a>
+                <a href="CV_Al_Hassane_BA.pdf" class="cta-button secondary" target="_blank" rel="noopener" aria-label="Télécharger mon CV">Télécharger mon CV</a>
                 <a href="#contact" class="cta-button outline" aria-label="Me contacter">Me contacter</a>
             </div>
 
@@ -1516,6 +1559,61 @@
                     <div class="timeline-year">2025</div>
                 </div>
 
+                <div class="timeline-item" data-type="certif">
+                    <div class="timeline-dot"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path></svg>
+                    </div>
+                    <div class="timeline-body">
+                        <h3>Network Technician Career Path</h3>
+                        <p class="muted">Cisco Networking Academy — RSI (Kamel ZIANI)</p>
+                        <p>Parcours complet Network Technician couvrant configuration Cisco, routage, commutation, dépannage réseau et fondamentaux de la cybersécurité.</p>
+                        <a class="cert-link" href="https://www.credly.com/badges/27c0eacc-c7b4-4bb5-95b4-db78aed1719e" target="_blank" rel="noopener noreferrer">Voir le badge Credly</a>
+                    </div>
+                    <div class="timeline-year">Fév 2026</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" focusable="false">
+                            <path d="M19.4 12.99c0-.66.11-1.3.31-1.9l2.03-1.56-2.2-3.81-2.4.67a7.1 7.1 0 00-1.6-.93L14.6 2h-5.2l-.96 2.34a7.1 7.1 0 00-1.6.93l-2.4-.67L2.3 10.5 4.3 12c.2.6.3 1.24.3 1.9s-.11 1.3-.31 1.9L2.3 17.3l2.2 3.81 2.4-.67c.5.4 1.1.73 1.6.93L9.4 22h5.2l.96-2.34c.5-.2 1.1-.53 1.6-.93l2.4.67 2.2-3.81-2.03-1.41c-.2-.6-.31-1.24-.31-1.9zM12 16.5A4.5 4.5 0 1112 7.5a4.5 4.5 0 010 9z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-body">
+                        <h3>AgroBridge — Plateforme numérique agricole</h3>
+                        <p class="muted">Projet innovant de commercialisation agricole</p>
+                        <p>Plateforme numérique transformant les circuits de commercialisation agricole au Sénégal. Versions mobile et web avec démonstration technique et économique.</p>
+                    </div>
+                    <div class="timeline-year">2026</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" focusable="false">
+                            <path d="M19.4 12.99c0-.66.11-1.3.31-1.9l2.03-1.56-2.2-3.81-2.4.67a7.1 7.1 0 00-1.6-.93L14.6 2h-5.2l-.96 2.34a7.1 7.1 0 00-1.6.93l-2.4-.67L2.3 10.5 4.3 12c.2.6.3 1.24.3 1.9s-.11 1.3-.31 1.9L2.3 17.3l2.2 3.81 2.4-.67c.5.4 1.1.73 1.6.93L9.4 22h5.2l.96-2.34c.5-.2 1.1-.53 1.6-.93l2.4.67 2.2-3.81-2.03-1.41c-.2-.6-.31-1.24-.31-1.9zM12 16.5A4.5 4.5 0 1112 7.5a4.5 4.5 0 010 9z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-body">
+                        <h3>Projet Fin de Module — Smartech SA</h3>
+                        <p class="muted">DGI-ESP — Technologies de l'Internet — Dr K. GUEYE</p>
+                        <p>Infrastructure réseau multi-sites : OSPF, EIGRP, RIP, ACL, Wireshark. Simulation complète sur GNS3 avec Cisco IOS.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
+                <div class="timeline-item" data-type="project">
+                    <div class="timeline-dot project"> 
+                        <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" focusable="false">
+                            <path d="M19.4 12.99c0-.66.11-1.3.31-1.9l2.03-1.56-2.2-3.81-2.4.67a7.1 7.1 0 00-1.6-.93L14.6 2h-5.2l-.96 2.34a7.1 7.1 0 00-1.6.93l-2.4-.67L2.3 10.5 4.3 12c.2.6.3 1.24.3 1.9s-.11 1.3-.31 1.9L2.3 17.3l2.2 3.81 2.4-.67c.5.4 1.1.73 1.6.93L9.4 22h5.2l.96-2.34c.5-.2 1.1-.53 1.6-.93l2.4.67 2.2-3.81-2.03-1.41c-.2-.6-.31-1.24-.31-1.9zM12 16.5A4.5 4.5 0 1112 7.5a4.5 4.5 0 010 9z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-body">
+                        <h3>Projet Fin de Module — SmartConnect</h3>
+                        <p class="muted">DGI-ESP — Programmation Réseau</p>
+                        <p>Application client/serveur en Python avec gestion des sockets TCP, connexions simultanées et protocole applicatif.</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                </div>
+
                 <!-- Projects -->
                 <div class="timeline-item" data-type="project">
                     <div class="timeline-dot project"> 
@@ -1635,7 +1733,7 @@
             <div class="modal-content">
                 <span class="close" id="quickResumeClose">&times;</span>
                 <h2>Résumé rapide — Al Hassane BA</h2>
-                <p class="quick-resume-desc">Étudiant en Télécommunications & Réseaux — ESP (2024–2026). Passionné par la cybersécurité et l'administration réseau.</p>
+                <p class="quick-resume-desc">Étudiant en Télécommunications & Réseaux — ESP (2024–2026). Intéressé par l’ingénierie réseau, la cybersécurité et l’automatisation.</p>
 
                 <h3 class="quick-resume-heading">Diplômes & certifications</h3>
                 <ul>
@@ -1648,10 +1746,18 @@
                 </ul>
 
                 <h3 class="quick-resume-heading">Compétences clés</h3>
-                <p class="quick-resume-desc">Routage & commutation • Virtualisation • Asterisk • Python • MySQL • Sécurité réseau</p>
+                <p class="quick-resume-desc">Routage & commutation • MPLS/LDP/VPN • Virtualisation • Asterisk • Python • MySQL • Sécurité réseau</p>
+
+                <h3 class="quick-resume-heading">Projets récents</h3>
+                <ul>
+                    <li>AgroBridge — Plateforme numérique agricole</li>
+                    <li>Réseau MPLS : configuration PE/P/CE, LDP et simulation VPN</li>
+                    <li>Infrastructure Réseau Multi-Sites — Smartech SA</li>
+                    <li>SmartConnect — Application Client/Serveur</li>
+                </ul>
 
                 <div class="quick-resume-actions">
-                    <a href="CV_Al_Hassane_Ba.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger CV</a>
+                    <a href="CV_Al_Hassane_BA.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger CV</a>
                     <button id="viewParcours" class="btn">Voir Parcours</button>
                     <button id="contactMeQuick" class="btn">Me contacter</button>
                 </div>
@@ -1663,19 +1769,86 @@
             <h2 class="section-title fade-in">Mes Projets</h2>
             <div class="projects-grid fade-in">
 
+                <div class="project-card" onclick="openProjectModal('reseauMPLS')">
+                    <div class="project-image">
+                        <img src="projetmpls.png" alt="Réseau MPLS" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="rapport_mpls_final.pdf" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Réseau MPLS</h3>
+                        <p>Mise en place d’un réseau MPLS avec configuration des routeurs (PE, P, CE), utilisation de LDP et simulation de VPN.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MPLS</span>
+                            <span class="tech-tag">LDP</span>
+                            <span class="tech-tag">VPN</span>
+                            <span class="tech-tag">PE/P/CE</span>
+                            <span class="tech-tag">Cisco IOS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('smartech')">
+                    <div class="project-image">
+                        <img src="smartech.png" alt="Infrastructure Réseau Multi-Sites — Smartech SA" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="rapport_technique_smartech.pdf" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Infrastructure Réseau Multi-Sites — Smartech SA (Terminé)</h3>
+                        <p>Conception et déploiement d'un réseau multi-sites avec OSPF multi-zones, EIGRP AS100, RIP v2, redistribution bidirectionnelle, 5 ACL de sécurité validées et 6 captures Wireshark annotées.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">GNS3</span>
+                            <span class="tech-tag">Cisco IOS</span>
+                            <span class="tech-tag">OSPF</span>
+                            <span class="tech-tag">EIGRP</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">ACL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('smartconnect')">
+                    <div class="project-image">
+                        <img src="smartconnect.png" alt="SmartConnect — Application Client/Serveur" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="rapport_smartechconnect_AlHassaneBA.pdf" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
+                                <a href="https://github.com/geek16th/smartechconnect" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code source</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>SmartConnect — Application Client/Serveur (Terminé)</h3>
+                        <p>Conception et développement d'une application client/serveur complète : architecture TCP/IP, gestion des connexions simultanées, protocole de communication applicatif et interface utilisateur.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Socket</span>
+                            <span class="tech-tag">TCP/IP</span>
+                            <span class="tech-tag">Client/Serveur</span>
+                            <span class="tech-tag">Réseau</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Projet SDN -->
                 <div class="project-card" onclick="openProjectModal('projetSDN')">
                     <div class="project-image">
                         <img src="projetsdn.jpg" alt="Projet SDN" />
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link">Voir le projet</a>
-                                <a href="#" class="project-link">Code source</a>
+                                <a href="#" class="project-link" onclick="event.preventDefault(); event.stopPropagation(); openProjectModal('projetSDN');">Voir le projet</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>Projet de virtualisation réseau (ended)</h3>
+                        <h3>Projet de virtualisation réseau (Terminé)</h3>
                         <p>Mise en place d'un réseau SDN avec OpenvSwitch et Ryu dans Proxmox.</p>
                         <div class="project-tech">
                             <span class="tech-tag">SDN</span>
@@ -1691,13 +1864,12 @@
                         <img src="telephonieIP.jpg" alt="Projet Téléphonie IP" />
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link">Voir le projet</a>
-                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link">Code source</a>
+                                <a href="https://drive.google.com/drive/folders/1A4NjQvUFdjSbRbrGC_DJ-1q0D22OAh0w?usp=drive_link" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>Réseau de téléphonie IP avec Asterisk (ended)</h3>
+                        <h3>Réseau de téléphonie IP avec Asterisk (Terminé)</h3>
                         <p>Projet final de téléphonie d'entreprise avec serveur Asterisk et VLANs.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Linux</span>
@@ -1713,8 +1885,8 @@
                         <img src="portfolio1.PNG" alt="Portfolio créatif" />
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link">Voir le projet</a>
-                                <a href="#" class="project-link">Code source</a>
+                                <a href="#" class="project-link" onclick="event.preventDefault(); event.stopPropagation(); openProjectModal('portfolio');">Voir le projet</a>
+                                <a href="https://github.com/geek16th/mon-porfolio" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code source</a>
                             </div>
                         </div>
                     </div>
@@ -1735,13 +1907,12 @@
                         <img src="proejt_vacc1.jpg" alt="Cisco Huawei" />
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link">Voir le projet</a>
-                                <a href="#" class="project-link">Code source</a>
+                                <a href="#" class="project-link" onclick="event.preventDefault(); event.stopPropagation(); openProjectModal('ciscoHuawei');">Voir le projet</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>Configuration Cisco & Huawei (ended)</h3>
+                        <h3>Configuration Cisco & Huawei (Terminé)</h3>
                         <p>Configuration de routeurs et switchs pour serveur DHCP et routage IP.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Cisco</span>
@@ -1757,8 +1928,8 @@
                         <img src="sas1.jpg" alt="Surveillance réseau" />
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link">Voir le projet</a>
-                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link">Code source</a>
+                                <a href="#" class="project-link" onclick="event.preventDefault(); event.stopPropagation(); openProjectModal('surveillanceReseau');">Voir le projet</a>
+                                <a href="https://github.com/geek16th/syst-me-de-surveillance-r-seau-avec-interface-web" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code source</a>
                             </div>
                         </div>
                     </div>
@@ -1774,10 +1945,36 @@
                     </div>
                 </div>
 
+                <!-- AgroBridge -->
+                <div class="project-card" onclick="openProjectModal('agrobridge')">
+                    <div class="project-image">
+                        <img src="AgroBridge.png" alt="AgroBridge" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="AgroBridge_Rapport_Final.pdf" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
+                                <a href="https://github.com/geek16th/AgroBridge_version_mobile" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code mobile</a>
+                                <a href="https://github.com/geek16th/agrobridge" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code web</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>AgroBridge (en cours)</h3>
+                        <p>AgroBridge répond à un besoin réel, urgent et mesurable du marché agricole sénégalais. Le projet démontre la faisabilité technique et économique d'une plateforme numérique capable de transformer profondément les circuits de commercialisation agricole au Sénégal.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Mobile</span>
+                            <span class="tech-tag">Web</span>
+                            <span class="tech-tag">Agriculture</span>
+                            <span class="tech-tag">Commerce</span>
+                            <span class="tech-tag">E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <!--
     <section id="activites" class="section">
         <div class="section-content">
             <h2 class="section-title fade-in">Mes activités</h2>
@@ -1816,6 +2013,7 @@
             <p class="carousel-hint">Cliquez sur une image pour l'agrandir.</p>
         </div>
     </section>
+    -->
 
     <!-- (old duplicate modal removed) -->
 
@@ -1882,11 +2080,19 @@
                     <div class="contact-rows">
                         <div class="contact-row">
                             <div class="row-left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5.5A2.5 2.5 0 014.5 3h15A2.5 2.5 0 0122 5.5v13A2.5 2.5 0 0119.5 21h-15A2.5 2.5 0 012 18.5v-13z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Email</strong></div>
-                            <div class="contact-value">
-                                <a href="mailto:ahassane.pro@gmail.com">ahassane.pro@gmail.com</a>
-                                <button class="copy-btn" data-copy="ahassane.pro@gmail.com" title="Copier l'email" aria-label="Copier l'email">
-                                    <svg class="icon icon-copy" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="5" y="5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
-                                </button>
+                            <div class="contact-value emails">
+                                <div class="contact-email-item">
+                                    <a href="mailto:ahassane.pro@gmail.com">ahassane.pro@gmail.com</a>
+                                    <button class="copy-btn" data-copy="ahassane.pro@gmail.com" title="Copier l'email" aria-label="Copier l'email">
+                                        <svg class="icon icon-copy" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="5" y="5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+                                    </button>
+                                </div>
+                                <div class="contact-email-item">
+                                    <a href="mailto:alhassaneba@esp.sn">alhassaneba@esp.sn</a>
+                                    <button class="copy-btn" data-copy="alhassaneba@esp.sn" title="Copier le nouvel email" aria-label="Copier le nouvel email">
+                                        <svg class="icon icon-copy" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="5" y="5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -1910,7 +2116,7 @@
                     </div>
 
                     <div class="contact-card-actions">
-                        <a href="https://drive.google.com/file/d/1VyHmNfDsz8ysJ-wzdULbDYFv4q5ytoWl/view?usp=sharing" class="btn" target="_blank" rel="noopener noreferrer">Télécharger mon CV</a>
+                        <a href="CV_Al_Hassane_BA.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger mon CV</a>
                         <button id="contactNowBtn" class="btn outline" aria-label="Contacter maintenant">Contacter maintenant</button>
                         <button id="scrollTopBtn" class="btn outline">Haut de page</button>
                     </div>
@@ -2638,6 +2844,27 @@
 
         // Project modal functionality (accessible, with prev/next, focus management)
         const projectDetails = {
+            reseauMPLS: {
+                title: "Réseau MPLS",
+                description: "Mise en place d’un réseau MPLS avec configuration des routeurs (PE, P, CE), utilisation de LDP et simulation de VPN.",
+                images: ["projetmpls.png"],
+                features: ["Configuration des routeurs PE, P et CE","Mise en oeuvre de LDP","Simulation de VPN MPLS","Validation de la connectivité de bout en bout"],
+                technologies: ["MPLS", "LDP", "VPN", "PE/P/CE", "Cisco IOS"]
+            },
+            smartech: {
+                title: "Infrastructure Réseau Multi-Sites — Smartech SA",
+                description: "Conception et déploiement d'un réseau multi-sites avec OSPF multi-zones, EIGRP AS100, RIP v2, redistribution bidirectionnelle, ACL de sécurité et captures Wireshark annotées.",
+                images: ["smartech.png"],
+                features: ["Architecture multi-sites complète","Routage dynamique OSPF, EIGRP et RIP","Redistribution bidirectionnelle des routes","Mise en place d'ACL de sécurité","Analyse et validation avec Wireshark"],
+                technologies: ["GNS3", "Cisco IOS", "OSPF", "EIGRP", "RIP", "ACL", "Wireshark"]
+            },
+            smartconnect: {
+                title: "SmartConnect — Application Client/Serveur",
+                description: "Conception et développement d'une application client/serveur complète : architecture TCP/IP, gestion des connexions simultanées, protocole de communication applicatif et interface utilisateur.",
+                images: ["smartconnect.png"],
+                features: ["Architecture client/serveur complète","Gestion des connexions simultanées","Communication via sockets TCP/IP","Conception de protocole applicatif","Interface utilisateur dédiée"],
+                technologies: ["Python", "Socket", "TCP/IP", "Client/Serveur", "Réseau"]
+            },
             projetSDN: {
                 title: "Projet de virtualisation réseau (SDN)",
                 description: "Mise en place d'un réseau SDN avec OpenvSwitch et Ryu dans Proxmox.",
@@ -2672,6 +2899,13 @@
                 images: ["portfolio1.PNG"],
                 features: ["Animations CSS avancées","Design responsive","Optimisation SEO"],
                 technologies: ["HTML5", "CSS3", "JavaScript", "Vscode", "GitHub"]
+            },
+            agrobridge: {
+                title: "AgroBridge",
+                description: "AgroBridge répond à un besoin réel, urgent et mesurable du marché agricole sénégalais. Le projet démontre la faisabilité technique et économique d'une plateforme numérique capable de transformer profondément les circuits de commercialisation agricole au Sénégal.",
+                images: ["AgroBridge.png"],
+                features: ["Plateforme de com-mercialisation agricole","Transformation des circuits de vente","Solution technique et économique éprouvée","Adresse un besoin réel du marché"],
+                technologies: ["Mobile", "Web", "Agriculture", "Commerce", "E-commerce", "Sénégal"]
             }
         };
 
