@@ -9,10 +9,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
     <style>
-        html {
-            overflow-x: clip;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -515,35 +511,6 @@
             gap: 2rem;
             margin-top: 3rem;
             align-items: stretch;
-        }
-
-        .projects-toolbar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .project-filter {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 10px;
-            padding: 8px 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .project-filter:hover,
-        .project-filter.active {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-        }
-
-        .project-card.project-hidden {
-            display: none;
         }
 
         .project-card {
@@ -1052,12 +1019,10 @@
                 align-items: center;
                 padding-top: 2rem;
                 transition: var(--transition);
-                visibility: hidden;
             }
 
             .nav-links.active {
                 right: 0;
-                visibility: visible;
             }
 
             .hero h1 {
@@ -1075,12 +1040,6 @@
 
             .projects-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .projects-toolbar {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 4px;
             }
 
             .contact-links {
@@ -1420,8 +1379,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Accueil</a></li>
                 <li><a href="#about" class="nav-link">À propos</a></li>
-                <li><a href="#skills" class="nav-link">Compétences</a></li>
-                <li><a href="#parcours" class="nav-link">Parcours</a></li>
                 <li><a href="#projects" class="nav-link">Projets</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -1437,7 +1394,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-image">
-                <img src="assets/images/image_professionnelle.jpg" alt="Portrait professionnel d'Al Hassane Ba, étudiant en DIC Informatique à l'ESP, souriant et confiant" />
+                <img src="assets/images/image_professionnelle.jpg" alt="Portrait professionnel d'Al Hassane Ba, etudiant en Reseaux & Telecommunication, souriant et confiant" />
             </div>
             <h1>Al Hassane Ba</h1>
             <p class="hero-subtitle"><span class="typed-text" aria-live="polite"></span><span class="typed-cursor" aria-hidden="true"></span></p>
@@ -1448,7 +1405,7 @@
                 <a href="#contact" class="cta-button outline" aria-label="Me contacter">Me contacter</a>
             </div>
 
-            <p class="hero-note">Étudiant en DIC Informatique — réseaux, cloud, DevOps et IA.</p>
+            <p class="hero-note">Disponible pour des stages et collaborations — ouvert aux opportunités en réseaux & cybersécurité.</p>
 
             <!-- Contrôles d'animation supprimés -->
         </div>
@@ -1465,7 +1422,13 @@
             <div class="skills-card">
                 <h2 class="skills-title">Compétences</h2>
                 <p class="muted">Mes domaines techniques et leur niveau estimé (0–100%). Cliquez / tabulez pour activer l'animation.</p>
-                <div class="skills-list" id="skillsList" aria-hidden="false"></div>
+                <div class="skills-list" aria-hidden="false">
+                    <div class="skill-row"><span class="skill-name">Réseaux</span><div class="skill-meter" data-val="30"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Cybersécurité</span><div class="skill-meter" data-val="20"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Linux & Sysadmin</span><div class="skill-meter" data-val="15"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Programmation (Python)</span><div class="skill-meter" data-val="78"><i></i></div></div>
+                    <div class="skill-row"><span class="skill-name">Web (HTML/CSS/JS)</span><div class="skill-meter" data-val="55"><i></i></div></div>
+                </div>
             </div>
             <div class="skills-card radar-wrap">
                 <!-- Animated SVG radar chart -->
@@ -1492,7 +1455,6 @@
                 <button class="filter-btn active" data-filter="all">Tous</button>
                 <button class="filter-btn" data-filter="education">Éducation</button>
                 <button class="filter-btn" data-filter="certif">Certifications</button>
-                <button class="filter-btn" data-filter="experience">Expériences</button>
                 <button class="filter-btn" data-filter="project">Projets</button>
             </div>
 
@@ -1529,23 +1491,11 @@
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.909V17h2V9z"></path><path d="M11 12.816L3.053 9 11 5.184 18.947 9z" opacity=".3"></path></svg>
                     </div>
                     <div class="timeline-body">
-                        <h3>DUT Réseaux et Télécommunications</h3>
-                        <p class="muted">ESP — Dakar</p>
-                        <p>Diplôme obtenu après un parcours centré sur l'administration réseau, les télécommunications et la sécurité.</p>
+                        <h3>Diplôme de Technicien Supérieur — Télécom & Réseaux</h3>
+                        <p class="muted">École Supérieure Polytechnique (ESP)</p>
+                        <p>Parcours en cours (2024–2026) centré sur l'administration réseau, la télécommunication et la sécurité.</p>
                     </div>
-                    <div class="timeline-year">2024 — 2026</div>
-                </div>
-
-                <div class="timeline-item" data-type="education">
-                    <div class="timeline-dot">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.909V17h2V9z"></path><path d="M11 12.816L3.053 9 11 5.184 18.947 9z" opacity=".3"></path></svg>
-                    </div>
-                    <div class="timeline-body">
-                        <h3>DIC Informatique — Cycle Ingénieur</h3>
-                        <p class="muted">ESP, UCAD — Dakar</p>
-                        <p>Formation d'ingénieur en informatique actuellement suivie, dans la continuité du parcours Télécommunications & Réseaux.</p>
-                    </div>
-                    <div class="timeline-year">2026 — 2029</div>
+                    <div class="timeline-year">2024 — en cours</div>
                 </div>
 
                 <!-- Certifications -->
@@ -1757,12 +1707,12 @@
                     </button>
                 </div>
                 <div class="about-text">
-                    <h3>Étudiant en DIC Informatique, spécialisé en réseaux et technologies</h3>
-                    <p>Après un DUT en Télécommunications & Réseaux à l'ESP (2024–2026), je poursuis actuellement mon parcours en Diplôme d'Ingénieur de Conception (DIC) Informatique à l'ESP, UCAD (2026–2029). Cette évolution renforce mon intérêt pour les réseaux, le cloud, le DevOps, l'intelligence artificielle et la cybersécurité.</p>
+                    <h3>Passionné d'informatique, de technologies et d'innovations</h3>
+                    <p>Je suis un passionné de technologies et d’innovation, animé par la curiosité et le désir constant d’apprendre. Mon parcours m’a conduit à explorer plusieurs domaines allant du développement logiciel (Python, Java, C) à la cybersécurité et l’administration des réseaux. Toujours en quête de nouveaux défis, je m’investis pleinement dans chaque projet afin de développer des solutions à la fois fonctionnelles, performantes et créatives.</p>
                     <p>Au fil de mes expériences, j’ai travaillé sur des projets concrets tels que la mise en place d’un réseau téléphonique d’entreprise avec Asterisk, la conception d’interfaces graphiques interactives, ou encore la gestion de base de données avec MySQL. Mes compétences couvrent un large spectre : conception UI/UX, administration de système, gestion de bases de données et mise en œuvre de systèmes sécurisés. Cette polyvalence me permet d’aborder chaque projet avec une vision globale et pragmatique.</p>
                     <p>Mon objectif est de mettre la technologie au service de l’efficacité, de la créativité et de la sécurité. J’aspire à contribuer à des projets innovants qui ont un impact positif, tout en continuant à perfectionner mes compétences. Pour moi, chaque ligne de code, chaque schéma réseau et chaque interface utilisateur sont des opportunités d’apporter une valeur ajoutée et de repousser les limites de ce qui est possible.</p>
                     
-                    <div class="skills" id="profileSkills">
+                    <div class="skills">
                         <span class="skill">Langage C</span>
                         <span class="skill">Python</span>
                         <span class="skill">MySQL</span>
@@ -1783,14 +1733,13 @@
             <div class="modal-content">
                 <span class="close" id="quickResumeClose">&times;</span>
                 <h2>Résumé rapide — Al Hassane BA</h2>
-                <p class="quick-resume-desc">Étudiant en DIC Informatique à l'ESP (2026–2029), après un DUT Télécommunications & Réseaux (2024–2026). Intéressé par les réseaux, le cloud, le DevOps et l'IA.</p>
+                <p class="quick-resume-desc">Étudiant en Télécommunications & Réseaux — ESP (2024–2026). Intéressé par l’ingénierie réseau, la cybersécurité et l’automatisation.</p>
 
                 <h3 class="quick-resume-heading">Diplômes & certifications</h3>
                 <ul>
                     <li>Baccalauréat en Enseignement Islamique — Maison de la Sagesse (2022)</li>
                     <li>Baccalauréat S1 — Maison de la Sagesse (2024)</li>
-                    <li>DUT Réseaux et Télécommunications — ESP, Dakar (2024–2026)</li>
-                    <li>DIC Informatique — Cycle Ingénieur — ESP, UCAD, Dakar (2026–2029)</li>
+                    <li>Diplôme de Technicien Supérieur — Télécom & Réseaux — ESP (2024–2026)</li>
                     <li>HCIA‑Datacom V1.0 (Huawei)</li>
                     <li>Certificat d'Analyste Junior en Cybersécurité (Cisco)</li>
                     <li>CCNA 1 : Presentation des Reseaux (Cisco)</li>
@@ -1798,9 +1747,6 @@
 
                 <h3 class="quick-resume-heading">Compétences clés</h3>
                 <p class="quick-resume-desc">Routage & commutation • MPLS/LDP/VPN • Virtualisation • Asterisk • Python • MySQL • Sécurité réseau</p>
-
-                <h3 class="quick-resume-heading">Langues</h3>
-                <p class="quick-resume-desc" id="quickResumeLanguages"></p>
 
                 <h3 class="quick-resume-heading">Projets récents</h3>
                 <ul>
@@ -1811,7 +1757,7 @@
                 </ul>
 
                 <div class="quick-resume-actions">
-                    <a href="assets/documents/CV_Al_Hassane_BA.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger CV</a>
+                        <a href="assets/documents/CV_Al_Hassane_BA.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger CV</a>
                     <button id="viewParcours" class="btn">Voir Parcours</button>
                     <button id="contactMeQuick" class="btn">Me contacter</button>
                 </div>
@@ -1821,16 +1767,9 @@
     <section id="projects" class="section">
         <div class="section-content">
             <h2 class="section-title fade-in">Mes Projets</h2>
-            <div class="projects-toolbar fade-in" role="toolbar" aria-label="Filtrer les projets">
-                <button class="project-filter active" type="button" data-project-filter="all">Tous</button>
-                <button class="project-filter" type="button" data-project-filter="network">Réseaux</button>
-                <button class="project-filter" type="button" data-project-filter="development">Développement</button>
-                <button class="project-filter" type="button" data-project-filter="security">Cybersécurité</button>
-                <button class="project-filter" type="button" data-project-filter="iot">IoT</button>
-            </div>
             <div class="projects-grid fade-in">
 
-                <div class="project-card" data-project-category="network" onclick="openProjectModal('reseauMPLS')">
+                <div class="project-card" onclick="openProjectModal('reseauMPLS')">
                     <div class="project-image">
                         <img src="assets/images/projetmpls.png" alt="Réseau MPLS" />
                         <div class="project-overlay">
@@ -1852,9 +1791,9 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-project-category="network" onclick="openProjectModal('smartech')">
+                <div class="project-card" onclick="openProjectModal('smartech')">
                     <div class="project-image">
-                        <img src="assets/images/smart_techsa_1.png" alt="SmartTech SA — Infrastructure réseau multi-sites" />
+                        <img src="assets/images/smartech.png" alt="Infrastructure Réseau Multi-Sites — Smartech SA" />
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="assets/documents/rapport_technique_smartech.pdf" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
@@ -1862,7 +1801,7 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>SmartTech SA (Terminé)</h3>
+                        <h3>Infrastructure Réseau Multi-Sites — Smartech SA (Terminé)</h3>
                         <p>Conception et déploiement d'un réseau multi-sites avec OSPF multi-zones, EIGRP AS100, RIP v2, redistribution bidirectionnelle, 5 ACL de sécurité validées et 6 captures Wireshark annotées.</p>
                         <div class="project-tech">
                             <span class="tech-tag">GNS3</span>
@@ -1875,9 +1814,9 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-project-category="development" onclick="openProjectModal('smartconnect')">
+                <div class="project-card" onclick="openProjectModal('smartconnect')">
                     <div class="project-image">
-                        <img src="assets/images/smart_connect_1.png" alt="SmartTech Connect — Plateforme de communication temps réel" />
+                        <img src="assets/images/smartconnect.png" alt="SmartConnect — Application Client/Serveur" />
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="assets/documents/rapport_smartechconnect_AlHassaneBA.pdf" class="project-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">Voir le projet</a>
@@ -1886,64 +1825,20 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>SmartTech Connect</h3>
-                        <p>Plateforme de communication temps réel avec messagerie, salons, gestion des utilisateurs et appels vidéo.</p>
+                        <h3>SmartConnect — Application Client/Serveur (Terminé)</h3>
+                        <p>Conception et développement d'une application client/serveur complète : architecture TCP/IP, gestion des connexions simultanées, protocole de communication applicatif et interface utilisateur.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Socket.IO</span>
-                            <span class="tech-tag">Base de données</span>
-                            <span class="tech-tag">WebRTC</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet IAM -->
-                <div class="project-card" data-project-category="security" onclick="openProjectModal('projetIAM')">
-                    <div class="project-image">
-                        <img src="assets/images/iam_1.png" alt="Projet IAM — gestion centralisée des identités" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" onclick="event.preventDefault(); event.stopPropagation(); openProjectModal('projetIAM');">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Projet IAM</h3>
-                        <p>Infrastructure d'authentification et de gestion centralisée des utilisateurs et des identités.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Linux</span>
-                            <span class="tech-tag">OpenLDAP</span>
-                            <span class="tech-tag">Kerberos</span>
-                            <span class="tech-tag">PAM</span>
-                            <span class="tech-tag">FreeIPA</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projet IoT -->
-                <div class="project-card" data-project-category="iot" onclick="openProjectModal('projetIoT')">
-                    <div class="project-image">
-                        <img src="assets/images/iot_1.png" alt="Projet IoT — objets connectés et réseaux" />
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" onclick="event.preventDefault(); event.stopPropagation(); openProjectModal('projetIoT');">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Projet IoT</h3>
-                        <p>Projet autour de l'Internet des Objets, des réseaux et de la communication entre objets connectés.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">IoT</span>
-                            <span class="tech-tag">Réseaux</span>
-                            <span class="tech-tag">Objets connectés</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Socket</span>
+                            <span class="tech-tag">TCP/IP</span>
+                            <span class="tech-tag">Client/Serveur</span>
+                            <span class="tech-tag">Réseau</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projet SDN -->
-                <div class="project-card" data-project-category="network" onclick="openProjectModal('projetSDN')">
+                <div class="project-card" onclick="openProjectModal('projetSDN')">
                     <div class="project-image">
                         <img src="assets/images/projetsdn.jpg" alt="Projet SDN" />
                         <div class="project-overlay">
@@ -1964,7 +1859,7 @@
                 </div>
 
                 <!-- Projet Téléphonie IP -->
-                <div class="project-card" data-project-category="network" onclick="openProjectModal('telephonieIP')">
+                <div class="project-card" onclick="openProjectModal('telephonieIP')">
                     <div class="project-image">
                         <img src="assets/images/telephonieIP.jpg" alt="Projet Téléphonie IP" />
                         <div class="project-overlay">
@@ -1985,7 +1880,7 @@
                 </div>
 
                 <!-- Portfolio -->
-                <div class="project-card" data-project-category="development" onclick="openProjectModal('portfolio')">
+                <div class="project-card" onclick="openProjectModal('portfolio')">
                     <div class="project-image">
                         <img src="assets/images/portfolio1.PNG" alt="Portfolio créatif" />
                         <div class="project-overlay">
@@ -2007,7 +1902,7 @@
                 </div>
 
                 <!-- Projet Cisco/Huawei -->
-                <div class="project-card" data-project-category="network" onclick="openProjectModal('ciscoHuawei')">
+                <div class="project-card" onclick="openProjectModal('ciscoHuawei')">
                     <div class="project-image">
                         <img src="assets/images/proejt_vacc1.jpg" alt="Cisco Huawei" />
                         <div class="project-overlay">
@@ -2028,7 +1923,7 @@
                 </div>
 
                 <!-- Projet Surveillance Réseau -->
-                <div class="project-card" data-project-category="security" onclick="openProjectModal('surveillanceReseau')">
+                <div class="project-card" onclick="openProjectModal('surveillanceReseau')">
                     <div class="project-image">
                         <img src="assets/images/sas1.jpg" alt="Surveillance réseau" />
                         <div class="project-overlay">
@@ -2051,7 +1946,7 @@
                 </div>
 
                 <!-- AgroBridge -->
-                <div class="project-card" data-project-category="development" onclick="openProjectModal('agrobridge')">
+                <div class="project-card" onclick="openProjectModal('agrobridge')">
                     <div class="project-image">
                         <img src="assets/images/AgroBridge.png" alt="AgroBridge" />
                         <div class="project-overlay">
@@ -2221,7 +2116,7 @@
                     </div>
 
                     <div class="contact-card-actions">
-                        <a href="assets/documents/CV_Al_Hassane_BA.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger mon CV</a>
+                            <a href="assets/documents/CV_Al_Hassane_BA.pdf" class="btn" target="_blank" rel="noopener noreferrer">Télécharger mon CV</a>
                         <button id="contactNowBtn" class="btn outline" aria-label="Contacter maintenant">Contacter maintenant</button>
                         <button id="scrollTopBtn" class="btn outline">Haut de page</button>
                     </div>
@@ -2237,7 +2132,7 @@
         <div class="footer-inner">
             <div class="footer-left">
                 <div class="logo">Hassane | Portfolio</div>
-                <p class="muted">Étudiant en DIC Informatique — réseaux, cloud, DevOps et IA.</p>
+                <p class="muted">Étudiant en Télécommunications & Réseaux — passionné par la cybersécurité.</p>
             </div>
             <div class="footer-center">
                 <h4>Liens</h4>
@@ -2316,10 +2211,10 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/content.js"></script>
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
+    <script src="assets/js/chatbot-improved.js"></script>
    <script>
      // Initialize EmailJS after the CDN script (public key must be a string)
      if (window.emailjs && typeof emailjs.init === 'function') {
@@ -2340,58 +2235,6 @@
          }
      });
      </script>
-        <!-- Contenu éditorial centralisé -->
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const content = window.portfolioContent;
-            if (!content) return;
-
-            const skillsList = document.getElementById('skillsList');
-            if (skillsList) {
-                skillsList.innerHTML = content.skills.map(skill => `
-                    <div class="skill-row"><span class="skill-name">${skill.name}</span><div class="skill-meter" data-val="${skill.value}"><i></i></div></div>
-                `).join('');
-            }
-
-            const profileSkills = document.getElementById('profileSkills');
-            if (profileSkills) {
-                profileSkills.innerHTML = content.skills.map(skill => `<span class="skill">${skill.name}</span>`).join('');
-            }
-
-            const languages = document.getElementById('quickResumeLanguages');
-            if (languages) {
-                languages.textContent = content.languages.map(language => `${language.name} (${language.level})`).join(' • ');
-            }
-
-            const timeline = document.getElementById('timeline');
-            if (!timeline) return;
-
-            const entries = [
-                ...content.education.map(entry => ({ ...entry, type: 'education' })),
-                ...content.certifications.map(entry => ({ ...entry, type: 'certif' })),
-                ...content.experiences.map(entry => ({ ...entry, type: 'experience' })),
-                ...content.projects.map(entry => ({ ...entry, type: 'project' }))
-            ];
-
-            timeline.innerHTML = entries.map(entry => {
-                const isProject = entry.type === 'project';
-                const iconClass = isProject ? ' project' : '';
-                const icon = isProject
-                    ? '<path d="M19.4 12.99c-.2-.6-.31-1.24-.31-1.9s.11-1.3.31-1.9l2.03-1.56-2.2-3.81-2.4.67a7.1 7.1 0 0 0-1.6-.93L14.6 2h-5.2l-.96 2.34a7.1 7.1 0 0 0-1.6.93l-2.4-.67-2.2 3.81L4.3 12c-.2.6-.3 1.24-.3 1.9s.1 1.3.3 1.9l-2.06 1.5 2.2 3.81 2.4-.67c.5.4 1.1.73 1.6.93L9.4 22h5.2l.96-2.34c.5-.2 1.1-.53 1.6-.93l2.4.67 2.2-3.81-2.03-1.41z"></path>'
-                    : entry.type === 'certif'
-                        ? '<path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"></path>'
-                        : '<path d="M12 3L1 9l11 6 9-4.909V17h2V9z"></path><path d="M11 12.816L3.053 9 11 5.184 18.947 9z" opacity=".3"></path>';
-                const credential = entry.credentialUrl
-                    ? `<a class="cert-link" href="${entry.credentialUrl}" target="_blank" rel="noopener noreferrer">Voir le badge</a>`
-                    : '';
-                return `<div class="timeline-item" data-type="${entry.type}">
-                    <div class="timeline-dot${iconClass}"><svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg></div>
-                    <div class="timeline-body"><h3>${entry.title}</h3><p class="muted">${entry.organization}</p><p>${entry.description}</p>${credential}</div>
-                    <div class="timeline-year">${entry.period}</div>
-                </div>`;
-            }).join('');
-        });
-        </script>
         <!-- Tri/filtre timeline parcours -->
         <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2419,8 +2262,7 @@
     (function(){
         // Typing effect for hero subtitle — lightweight, no external deps
         const phrases = [
-            'Étudiant Ingénieur en Informatique',
-            'Réseaux • Cloud • DevOps • IA',
+            'Étudiant en Télécommunications & Réseaux',
             'Passionné par les réseaux et la cybersécurité',
             'Linux • Réseaux • Python • MySQL',
             'Créatif • Curieux • Motivé',
@@ -2853,22 +2695,6 @@
                 // otherwise allow default behavior (external link like index.v2.html)
             });
         });
-
-        // Project filters
-        const projectFilters = document.querySelectorAll('[data-project-filter]');
-        const projectCards = document.querySelectorAll('#projects .project-card');
-        projectFilters.forEach(filterButton => {
-            filterButton.addEventListener('click', function() {
-                const filter = this.getAttribute('data-project-filter');
-                projectFilters.forEach(button => button.classList.remove('active'));
-                this.classList.add('active');
-                projectCards.forEach(card => {
-                    const matches = filter === 'all' || card.getAttribute('data-project-category') === filter;
-                    card.classList.toggle('project-hidden', !matches);
-                });
-            });
-        });
-
         // Scroll des images au niveau de la section "Mes activités"
         document.querySelectorAll('.slider').forEach(slider => {
         const slides = slider.querySelectorAll('img');
@@ -3027,32 +2853,18 @@
                 technologies: ["MPLS", "LDP", "VPN", "PE/P/CE", "Cisco IOS"]
             },
             smartech: {
-                title: "SmartTech SA",
+                title: "Infrastructure Réseau Multi-Sites — Smartech SA",
                 description: "Conception et déploiement d'un réseau multi-sites avec OSPF multi-zones, EIGRP AS100, RIP v2, redistribution bidirectionnelle, ACL de sécurité et captures Wireshark annotées.",
-                images: ["assets/images/smart_techsa_1.png", "assets/images/smart_techsa_2.png"],
+                images: ["assets/images/smartech.png"],
                 features: ["Architecture multi-sites complète","Routage dynamique OSPF, EIGRP et RIP","Redistribution bidirectionnelle des routes","Mise en place d'ACL de sécurité","Analyse et validation avec Wireshark"],
                 technologies: ["GNS3", "Cisco IOS", "OSPF", "EIGRP", "RIP", "ACL", "Wireshark"]
             },
             smartconnect: {
-                title: "SmartTech Connect",
-                description: "Plateforme de communication temps réel avec messagerie, salons, gestion des utilisateurs et fonctionnalités d'appels vidéo.",
-                images: ["assets/images/smart_connect_1.png", "assets/images/smart_connect_2.png"],
-                features: ["Messagerie en temps réel","Création et gestion de salons","Gestion des utilisateurs","Fonctionnalités d'appels vidéo"],
-                technologies: ["Node.js", "Express", "Socket.IO", "Base de données", "WebRTC"]
-            },
-            projetIAM: {
-                title: "Projet IAM",
-                description: "Projet d'infrastructure et de gestion des identités pour mettre en place une authentification et une gestion centralisée des utilisateurs.",
-                images: ["assets/images/iam_1.png"],
-                features: ["Authentification centralisée","Gestion des identités et des utilisateurs","Intégration des services d'annuaire et d'authentification"],
-                technologies: ["Linux", "OpenLDAP", "Kerberos", "PAM", "FreeIPA"]
-            },
-            projetIoT: {
-                title: "Projet IoT",
-                description: "Projet autour de l'Internet des Objets, des réseaux et de la communication entre objets connectés.",
-                images: ["assets/images/iot_1.png", "assets/images/iot_2.png"],
-                features: ["Communication entre objets connectés","Réseaux IoT","Internet des Objets"],
-                technologies: ["IoT", "Réseaux", "Objets connectés"]
+                title: "SmartConnect — Application Client/Serveur",
+                description: "Conception et développement d'une application client/serveur complète : architecture TCP/IP, gestion des connexions simultanées, protocole de communication applicatif et interface utilisateur.",
+                images: ["assets/images/smartconnect.png"],
+                features: ["Architecture client/serveur complète","Gestion des connexions simultanées","Communication via sockets TCP/IP","Conception de protocole applicatif","Interface utilisateur dédiée"],
+                technologies: ["Python", "Socket", "TCP/IP", "Client/Serveur", "Réseau"]
             },
             projetSDN: {
                 title: "Projet de virtualisation réseau (SDN)",
@@ -3372,13 +3184,6 @@
                 msg.textContent = text;
                 chatBody.appendChild(msg);
                 chatBody.scrollTop = chatBody.scrollHeight;
-            }
-
-            function botReply(msg) {
-                msg = msg.toLowerCase();
-                if (msg.includes("cv") || msg.includes("résumé")) return "📄 Clique sur le bouton Résumé au-dessus.";
-                if (msg.includes("contact")) return "📩 Clique sur Contact pour m’écrire.";
-                return "🤖 Je suis là pour t’aider.";
             }
 
             function sendMessage() {
