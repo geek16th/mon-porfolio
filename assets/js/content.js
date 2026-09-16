@@ -1,13 +1,14 @@
 window.portfolioContent = {
     skills: [
-        { name: "Réseaux", value: 30 },
-        { name: "Cybersécurité", value: 20 },
-        { name: "Linux & Sysadmin", value: 15 },
-        { name: "Programmation (Python)", value: 78 },
-        { name: "Web (HTML/CSS/JS)", value: 55 },
-        { name: "MQTT", value: 35 },
-        { name: "Windows IoT", value: 30 },
-        { name: "Microcontrôleurs ESP32", value: 40 }
+        { name: "Routage & switching", category: "network", level: "Opérationnel", proof: "VLAN, DHCP, OSPF, EIGRP et configuration Cisco / Huawei.", project: "Configuration Cisco & Huawei" },
+        { name: "MPLS & VPN", category: "network", level: "Opérationnel", proof: "Configuration des routeurs PE/P/CE, LDP et simulation de VPN.", project: "Réseau MPLS" },
+        { name: "Réseaux virtuels", category: "network", level: "Opérationnel", proof: "Segmentation et expérimentation avec Open vSwitch, Ryu et Proxmox.", project: "Virtualisation réseau (SDN)" },
+        { name: "Linux & administration système", category: "systems", level: "Bases solides", proof: "Administration Linux et mise en place de services réseau et d'infrastructure.", project: "Projet IAM" },
+        { name: "IoT & systèmes embarqués", category: "systems", level: "Opérationnel", proof: "Communication MQTT, Windows IoT et utilisation de microcontrôleurs ESP32.", project: "Projet IoT" },
+        { name: "Python", category: "development", level: "Opérationnel", proof: "Développement de scripts, interfaces et outils pour des projets réseau.", project: "Système de surveillance réseau" },
+        { name: "Web & applications temps réel", category: "development", level: "Opérationnel", proof: "HTML, CSS, JavaScript, Node.js, Express et Socket.IO.", project: "SmartTech Connect" },
+        { name: "IAM & sécurité des accès", category: "security", level: "Bases solides", proof: "Authentification centralisée et gestion des identités avec OpenLDAP, Kerberos et FreeIPA.", project: "Projet IAM" },
+        { name: "DevOps & virtualisation", category: "security", level: "Bases solides", proof: "Fondamentaux des pratiques DevOps, Git, Docker et virtualisation.", project: "IBM DevOps Essentials" }
     ],
     languages: [
         { name: "Français", level: "Natif" },
@@ -47,7 +48,7 @@ window.portfolioContent = {
             organization: "Google",
             description: "Certification professionnelle en intelligence artificielle.",
             period: "2026",
-            image: "assets/certifications/google-ai-professional.pdf",
+            image: "",
             credentialUrl: ""
         },
         {
@@ -55,7 +56,7 @@ window.portfolioContent = {
             organization: "Formation en ligne",
             description: "Parcours de Python vers les fondamentaux du machine learning.",
             period: "2026",
-            image: "assets/certifications/from-python-to-ml.pdf",
+            image: "assets/certifications/from-python-to-ml.png",
             credentialUrl: ""
         },
         {
@@ -63,7 +64,7 @@ window.portfolioContent = {
             organization: "Huawei — version française",
             description: "Fondamentaux des réseaux et des équipements datacom Huawei.",
             period: "2024",
-            image: "assets/certifications/hcia-datacom.pdf",
+            image: "",
             credentialUrl: ""
         },
         {

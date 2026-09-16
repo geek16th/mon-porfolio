@@ -1,11 +1,13 @@
 # Certificats
 
-Déposer ici les certificats PDF avec ces noms exacts :
+Déposer ici les certificats et aperçus avec ces noms exacts :
 
-- `hcia-datacom.pdf`
 - `ccna3.pdf`
-- `google-ai-professional.pdf`
+- `devops-essentials.2.png`
+- `from-python-to-ml.png`
+- `IBM_devop_intro.pdf`
+- `IBM_devops.pdf`
+- `network_tech_path.pdf`
 - `python-fundamentals.pdf`
-- `from-python-to-ml.pdf`
 
-Les fichiers sont référencés dans `assets/js/content.js` et pourront être ouverts comme documents. Aucun certificat n'est généré ou inventé dans le dépôt.
+Les fichiers disponibles sont référencés dans `assets/js/content.js`. Les certifications sans fichier local restent décrites dans le parcours, sans lien de téléchargement inventé.
