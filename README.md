@@ -48,4 +48,32 @@ Voici quelques projets que vous pouvez découvrir sur ce portfolio :
 ## Installation / Visualisation
 1. Cloner le dépôt :  
 ```bash
-git clone https://github.com/geek16th/Portfolio.git
+git clone https://github.com/geek16th/mon-porfolio.git
+cd mon-porfolio
+```
+2. Ouvrir `index.html` dans un navigateur, ou lancer un serveur local pour tester les chemins et les modules JavaScript :
+```bash
+python -m http.server 8000
+```
+Puis ouvrir <http://localhost:8000>.
+
+## Organisation
+
+```text
+index.html              # Page principale
+site.webmanifest        # Configuration PWA
+CNAME                   # Domaine GitHub Pages
+assets/
+   images/               # Photos, illustrations et aperçus de projets
+   documents/            # CV, rapports et autres PDF
+   icons/                # Favicons et icônes PWA
+   js/                   # Scripts JavaScript réutilisables
+```
+
+## Bonnes pratiques
+
+- Utiliser des chemins relatifs depuis `index.html` pour que le site fonctionne sur GitHub Pages et en local.
+- Ajouter un texte `alt` descriptif à chaque image et compresser les images avant publication.
+- Placer les nouveaux fichiers dans le dossier `assets` adapté, plutôt qu'à la racine.
+- Tester les liens, les images et la version mobile avant chaque publication.
+- Garder les secrets hors du dépôt : EmailJS doit utiliser une clé publique et aucune clé privée ne doit être ajoutée au code client.
